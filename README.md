@@ -1,248 +1,396 @@
-# [Neo-HPSTR Jekyll Theme](http://aronbordin.com/neo-hpstr-jekyll-theme)
-[![Gem Version](https://badge.fury.io/rb/neo-hpstr-jekyll-theme.svg)](https://badge.fury.io/rb/neo-hpstr-jekyll-theme)
-
-Neo-HPSTR Jekyll is a responsive and modern blog template.
-
-![Preview](http://aron-bordin.github.io/neo-hpstr-jekyll-theme/images/neo-hpstr-jekyll-theme-preview.png)
-
-Demo: http://aronbordin.com/neo-hpstr-jekyll-theme
-
-
-## Contents
-
-- [Installation](#installation)
-- [Features](#features)
-- [Configuration](#configuration)
-- [Questions](#questions)
-- [Contributing](#contributing)
-- [Development](#development)
-- [License](#license)
-
-## Installation
-
-### As a Boilerplate / Fork
-
-1. [Fork the repo](https://github.com/aron-bordin/neo-hpstr-jekyll-theme)
-2. Clone down the repo with `$ git clone git@github.com:username/reponame.git`
-3. Delete the `demo/` folder and `screenshot.png` files
-4. Install bundler with `$ gem install bundler`
-5. Install gems with `$ bundle install`
-6. Run Jekyll with `$ bundle exec jekyll serve --watch`
-7. Begin hacking for your project
-
-(If you are serving your blog at github, make sure to enale the gh-pages at yout repo settings)
-
-### As a Jekyll >= 3.3 theme gem
-
-If you already have a jekyll project, jump to the instructions bellow. Otherwise, follow these steps:
-
-1. Install jekyll and bundler with `$ gem install jekyll bundler`.
-2. Create your website `jekyll new my-awesome-blog`.
-3. `cd my-awesome-blog`
-
-Inside the project folder, install the theme as follows:
+# About this Cool Concise Jekyll Blog Theme 🤘🤘🤘
 
-1. Download the starter `/demo` content, [quick download link](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/aron-bordin/neo-hpstr-jekyll-theme/tree/master/demo) and extract the content to the blog folter.
-2. Install bundler with `$ gem install bundler`
-3. Install gems with `$ bundle install`
-4. Run Jekyll with `$ bundle exec jekyll serve --watch`
-5. Begin hacking for your project
+[![GitHub stars](https://img.shields.io/github/stars/Gaohaoyang/gaohaoyang.github.io.svg)](https://github.com/Gaohaoyang/gaohaoyang.github.io/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Gaohaoyang/gaohaoyang.github.io.svg)](https://github.com/Gaohaoyang/gaohaoyang.github.io/network)
+[![GitHub issues](https://img.shields.io/github/issues/Gaohaoyang/gaohaoyang.github.io.svg)](https://github.com/Gaohaoyang/gaohaoyang.github.io/issues)
+[![GitHub release](https://img.shields.io/github/release/Gaohaoyang/gaohaoyang.github.io.svg)](https://github.com/Gaohaoyang/gaohaoyang.github.io/releases)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Gaohaoyang/gaohaoyang.github.io/master/LICENSE)
 
+**[中文版 Chinese README 请点击这里 🇨🇳](https://github.com/Gaohaoyang/gaohaoyang.github.io/blob/master/README-zh-cn.md)**
 
-### Boilerplate & Theme differences
+With the escalation of jekyll version, but I also want to reconstruct my older blog theme, so I did reconstruction and added some features recently. My new blog theme will still be stored in this repository. I will also use this theme in the future. Now I have done basically, then I will focus on issues that users opend to make theme better.
 
-The boilerplate kit is better for more drastic hacking and changes, a project that's quite different to any other and needs a lot of custom work done. Additionally you'll only be able to use this method if you want to host it on GitHub Pages, as [themes can't be submitted](https://pages.github.com/themes/)... yet.
+**My Blog Url: [http://gaohaoyang.github.io/](http://gaohaoyang.github.io/)**. If you like this theme, you can give me a star to encourage me. Welcome everyone to use it.
 
-Using the theme will allow you to receive updates made and will be more programmatic. To make your own changes you'll need to overwrite the files with your own.
+## Content
 
-## Features
+* [Preview](#preview)
+* [Page Details](#page-details)
+    * [Home](#home)
+    * [Archives](#archives)
+    * [Categories](#categories)
+    * [Tags](#tags)
+    * [Collections](#collections)
+    * [Demo](#demo)
+    * [About](#about)
+    * [Comments](#comments)
+    * [Post Contents](#post-contents)
+    * [Code Highlight](#code-highlight)
+    * [Light Shadow](#light-shadow)
+    * [Mobile Adaptation](#mobile-adaptation)
+    * [Footer](#footer)
+    * [Statistical Analysis](#statistical-analysis)
+* [Usage](#usage)
+    * [1. Install ruby and jekyll environment](#1-install-ruby-and-jekyll-environment)
+    * [2. Copy theme code](#2-copy-theme-code)
+    * [3. Change parameter](#3-change-parameter)
+        * [Basic info](#basic-info)
+        * [Link info](#link-info)
+        * [Comments info](#comments-info)
+        * [Statistical analysis info](#statistical-analysis-info)
+    * [4. Write post](#4-write-post)
+    * [5. Local launch](#5-local-launch)
+    * [6. Push to GitHub](#6-push-to-github)
+* [Donate](#donate)
+* [Update Log](#update-log)
+* [License](#license)
 
-* Modern design.
-* Responsive templates for post, page, and home `_layouts`. Looks great on mobile, tablet, and desktop devices.
-* Gracefully degrades in older browsers. Compatible with Internet Explorer 8+ and all modern browsers.
-* Sweet topbar animated menu with support for drop-downs.
-* Optional [Disqus](http://disqus.com) comments and social sharing links.
-* [Open Graph](https://developers.facebook.com/docs/opengraph/) and [Twitter Cards](https://dev.twitter.com/docs/cards) support for a better social sharing experience.
-* Simple [custom 404 page](x) to get you started.
-* [Syntax highlighting](x) to make your code examples look snazzy
-* Author panel, with social links
+## Preview
 
-## Configuration
+First of all, let's see previews.
 
-Here are some tips on how to customize your blog theme. If you have questions, just open a new issue :)
+Index Page
+![index](http://ww3.sinaimg.cn/large/7011d6cfjw1f3bdli86awj211k0oyqen.jpg)
 
-### Project tree
+Post Page
+![post](http://ww4.sinaimg.cn/large/7011d6cfjw1f3bdmzb9v6j210p0j7gwn.jpg)
 
-    ├── about.md                    # about page, /about/
-    ├── assets/                     # css, js, fonts, etc
-    ├── categories.html
-    ├── _config.yml                 # your blog configuration
-    ├── demo/                       # folder with quick start content
-    ├── feed.xml                    # rss feed generator
-    ├── Gemfile                     # project dependencies
-    ├── Gruntfile.js                # some grunt tasks, useful for theme developing
-    ├── images/                     # blog images
-    ├── _includes
-    │   ├── author.html             # author banner (at the end of post)
-    │   ├── browser-upgrade.html    # ask for update
-    │   ├── disqus_comments.html    # comments
-    │   ├── feed-footer.html        # feed footers
-    │   ├── footer.html             # page footer
-    │   ├── gallery                 # used for displaying images in a page
-    │   ├── header.html             # header menu
-    │   ├── head.html               # site head, with css includes and metadata
-    │   ├── icons.html              # site icons
-    │   ├── pagination.html         # pagination
-    │   ├── read-more.html          # read-more banner, to recommend posts
-    │   ├── scripts.html            # js scripts
-    │   └── social-share.html       # floating social share integration
-    ├── index.html                  # homepage
-    ├── _layouts                    # blog layouts
-    │   ├── dark-post.html
-    │   ├── home.html
-    │   ├── page.html
-    │   └── post.html
-    ├── LICENSE.txt
-    ├── neo-hpstr-jekyll-theme.gemspec
-    ├── package.json
-    ├── _posts                     # sample posts
-    │   ├── 2016-11-26-sample-post-images.md
-    │   ├── 2016-11-27-video-post.md
-    │   ├── 2016-11-28-sample-link-post.md
-    │   ├── 2016-11-29-background-image.md
-    │   ├── 2016-11-30-dark-post.md
-    │   ├── 2016-12-01-code-highlighting-post.md
-    │   └── 2016-12-02-sample-post.md
-    ├── posts.html                 # page for listing posts
-    ├── README.md
-    ├── _sass                      # blog style
-    ├── screenshoot.png
-    ├── search.html                # search page
-    ├── search.json
-    ├── _site/
-    ├── tags.html                  # tags page
+## Page Details
 
+### Home
 
-### Disqus Comments
+Index page show 5 posts excerpt as a default. Readers can click article title or read more button to see full post. There are recent posts area, categories area and tags area at the right part of the index page. You can also add an area at this part, if you change the file `index.html`.
 
-Create a [Disqus](http://disqus.com) account and change `disqus_shortname` in `_config.yml` to the Disqus *shortname* you just setup. By default comments appear on all post and pages if you assigned a shortname. To disable commenting on a post or page, add the following to its YAML Front Matter:
+### Archives
 
-    comments: false
+Archive post according to the year.
 
-### Social Share Links
+### Categories
 
-To disable Facebook, Twitter, and Google+ share links on a post or page, add the following to its front matter:
+Show posts according to the category.
 
-    share: false
+### Tags
 
-### Floating Social Share Links
+Show posts according to the tags.
 
-To enable floating share links on the left of the screen, edit it on `_config.yml`:
+### Collections
 
-    float_share: true
+The user can collect their favorite article links with `markdown` syntax.
 
-### Owner/Author Information
+### Demo
 
-Change your name, and avatar photo (200x200 pixels or larger), email, and social networking URLs. If you want to link to an external image on Gravatar or something similar you'll need to edit the path in `_includes/author.html` since it assumes it is hosted on your site.
+I use *[Masonry](http://masonry.desandro.com/)* to rewrite the waterfall responsive layout. Better interactive experience.
 
-### Google Analytics and Webmaster Tools
+### About
 
-Your Google Analytics ID goes here along with meta tags for [Google Webmaster Tools](http://support.google.com/webmasters/bin/answer.py?hl=en&answer=35179) and [Bing Webmaster Tools](https://ssl.bing.com/webmaster/configure/verify/ownershi) site verification.
+The user can write some introduction about theirselves and their site with `markdown` syntax.
 
-### Top Menu - Navigation Links
+### Comments
 
-To add additional links in the menu edit `_config.yml`. Use the following format to set the URL and title for as many links as you'd like. *External links will open in a new window..* You can create a sub-category using the `submenu` item. Also, you can list your post categories setting the `type: 'categories'`
+This theme supports both [disqus](https://disqus.com/) and [多说评论 duoshuo comments](http://duoshuo.com/). It's very easy to config your comments module.
 
+The only thing you need do is to change the `short_name` in the file `_config.yml`. As follows.
 
-    menu:
-      - title: 'Home'
-        url: '/'
-      - title: 'Fork'
-        url: 'http://github.com/aron-bordin/neo-hpstr-jekyll-theme'
-      - title: 'Tags'
-        url: '/tags'
-      - title: 'Categories'
-        url: '/categories'
-        type: 'categories'
-      - title: 'Favorites'
-        url: '#'
-        submenu:
-          - title: 'highlighter'
-            url: '/code-highlighting-post/'
-          - title: 'intro'
-            url: '/sample-post/'
+```yml
+# comments
+# two ways to comment, only choose one, and use your own short name
+duoshuo_shortname: #xxx
+disqus_shortname: xxx
+```
 
-### Adding New Content with Octopress
+### Post Contents
 
-While completely optional, I've included Octopress and some starter templates to automate the creation of new posts and pages. To take advantage of it start by installing the [Octopress](https://github.com/octopress/octopress) gem if it isn't already.
+The post contents is fixed at the right side while page is scrolling. There will be a scroll bar on contents while it is outside the window height.
 
-    $ gem install octopress
+### Code Highlight
 
-#### New Post
+While the jekyll is update to 3.x.x, you can use github flavored markdown to write code.
 
-Default command
+More info to see [syntax-highlighter-changed](https://jekyllrb.com/docs/upgrading/2-to-3/#syntax-highlighter-changed).
 
-    $ octopress new post "Post Title"
+### Light Shadow
 
-Default works great if you want all your posts in one directory, but if you're like me and want to group them into subfolders like `/posts`, `/portfolio`, etc. Then this is the command for you. By specifying the DIR it will create a new post in that folder and populate the `categories:` YAML with the same value.
+![light](http://ww3.sinaimg.cn/large/7011d6cfjw1f3be6y4vp3j209i02rweg.jpg)
 
-    $ octopress new post "New Portfolio Post Title" --dir portfolio
+You can see the white shadow on the current item in the navbar. I call this light shadow.
 
-#### New Page
+### Mobile Adaptation
 
-To create a new page use the following command.
+Of course, I have done a very good mobile adaptation.
 
-    $ octopress new page new-page/
+![mobile](http://ww4.sinaimg.cn/large/7011d6cfjw1f3bebnzxkpj20ah0fzgp4.jpg)
 
-### Style Customization
+### Footer
 
-Here you'll find some useful scss variables to help you to customize your Blog interface. All variables can be found at `_sass/_variables.scss`.
+**Welcome to use this blog theme, but please keep the theme author info at footer.** Theme designed by [HyG](https://github.com/gaohaoyang).
 
-#### Top Navbar Size
+![footer](http://ww3.sinaimg.cn/large/7011d6cfjw1f3bepd8002j20hl02ct95.jpg)
 
-To change its size, edit the **`$menu-height`** value. It's recommended a value between 50px and 100px. This variable will automatically update the icon and menu size for you.
+### Statistical Analysis
 
-#### Top Navbar Colors
+This theme supports Google Analytics and Baidu Statistics， you can just config the id in the file `_config.yml`, as follows.
 
-The navbar uses two colors, the top color and overflow color. The top color represents the navbar color when the window is not scrolled and the overflow color represents the color when we have a sufficient scroll to change its color.
+```yml
+# statistic analysis 统计代码
+# 百度统计 id，将统计代码替换为自己的百度统计id，即
+# hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxxxx";
+# xxxxx字符串
+baidu_tongji_id: xxxxxxxxxxxx
+google_analytics_id: UA-xxxxxxxx # google 分析追踪id
+```
 
-You can change these colors using the **`$menu-top`** and **`$menu-overflow`** variable values.
+## Usage
 
-#### Top Navbar hover color
+Welcome everyone to use this theme, this part shows introduction to use.
 
-The color that you see in the item under the mouse can be changed in the **`$header-margin`** variable.
+### 1. Install ruby and jekyll environment
 
-### Further Customization
+This step and Step 5 mainly talk to you how to launch blog at local. If you don't want to launch at local, you can ignore these 2 steps. But I still strongly suggest to do this. Ensure there is nothing wrong before pushing to the github.
 
-Jekyll 2.x added support for Sass files making it much easier to modify a theme's fonts and colors. By editing values found in `_sass/variables.scss` you can fine tune the site's colors and typography.
+The Windows users can directly use [RubyInstaller](http://rubyinstaller.org/) to install ruby environment. Follow the prompts while installing.
 
-For example if you wanted a red background instead of white you'd change `$bodycolor: #fff;` to `$bodycolor: $cc0033;`.
+Install jekyll commands:
 
-To modify the site's JavaScript files I setup a Grunt build script to lint/concatenate/minify all scripts into `scripts.min.js`. [Install Node.js](http://nodejs.org/), then [install Grunt](http://gruntjs.com/getting-started), and then finally install the dependencies for the theme contained in `package.json`:
+```
+gem install jekyll
+```
 
-    npm install
+For more details, you can view the jekyll official website. [https://jekyllrb.com/](https://jekyllrb.com/)
 
-From the theme's root, use `grunt` to concatenate JavaScript files and optimize `.jpg`, `.png` and `.svg` files in the `images/` folder.
+There may be something wrong at mac OS X El Capitan, you can see the solution at [https://jekyllrb.com/docs/troubleshooting/#jekyll-amp-mac-os-x-1011]( https://jekyllrb.com/docs/troubleshooting/#jekyll-amp-mac-os-x-1011).
 
-You can also use `grunt dev` in combination with `bundle exec jekyll serve` to watch for updates in JS files that Grunt will then automatically re-build as you write your code, which will in turn auto-generate your Jekyll site when developing locally.
+If you are interesting in jekyll, you can see the jekyll source code at [https://github.com/jekyll/jekyll](https://github.com/jekyll/jekyll).
 
-## Questions?
+![jekyll logo](http://jekyllcn.com/img/logo-2x.png)
 
-Having a problem getting something to work or want to know why I setup something in a certain way?  [File a GitHub Issue](http://github.com/aron-bordin/neo-hpstr-jekyll-theme/issues/new). And if you make something cool with this theme feel free to let me know.
+### 2. Copy theme code
 
-## Contributing
+You can clone, download or fork this repo.
 
+### 3. Change parameter
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/aron-bordin/neo-hpstr-jekyll-theme. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Mainly change the parameters at file `_config.yml` and use your own `favicon.ico`.
 
-## Development
+#### Basic info
 
-To set up your environment to develop this theme, run `bundle install`.
+Shows at site header part.
 
-Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
+```yml
+# Site settings
+title: HyG
+brief-intro: Front-end Dev Engineer
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://gaohaoyang.github.io" # the base hostname & protocol for your site
+```
 
-When your theme is released, only the files in `_layouts`, `_includes`, and `_sass` tracked with Git will be released.
+#### Link info
+
+Mainly shows at the footer of the site.
+
+```yml
+# other links
+twitter_username: gaohaoyang126
+facebook_username: gaohaoyang.water
+github_username:  Gaohaoyang
+email: gaohaoyang126@126.com
+weibo_username: 3115521wh
+zhihu_username: gaohaoyang
+linkedIn_username: gaohaoyang
+dribbble_username:
+
+description_footer: 本站记录我前端之旅的沿途风景！
+```
+
+#### Comments info
+
+Get your own `short_name`:
+
+Visit https://disqus.com/ or http://duoshuo.com/. And follow the prompts at the site.
+
+```yml
+# comments
+# two ways to comment, only choose one, and use your own short name
+duoshuo_shortname: #hygblog
+disqus_shortname: xxxx
+```
+
+When you done, you can also see the comments info at disqus or duoshuo admin console.
+
+#### Statistical analysis info
+
+Get Google Analytics id or Baidu Statistics id：
+
+Visit https://www.google.com/analytics/ or http://tongji.baidu.com/. And follow the prompts at the site.
+
+Of course, if you don't want any statistical and analysis info, you can type nothing at id position.
+
+```yml
+# statistic analysis 统计代码
+# 百度统计 id，将统计代码替换为自己的百度统计id，即
+# hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxxxx";
+# xxxxx字符串
+baidu_tongji_id: cf850xxxxxxxxxxxxxxxx
+google_analytics_id: UA-7xxxxxx-4 # google 分析追踪id
+```
+
+When you done, you can see UV, PV, location etc. info at your own Google Analytics or Baidu Statistic console.
+
+### 4. Write post
+
+You can write posts at folder `_posts`. At the beginning of the post, you should declare layout、title、date、categories、tags、author(optional) info、mathjax(optional，click [here](https://www.mathjax.org/) for more detail about `Mathjax`).
+
+```
+---
+layout: post
+title:  "对这个 jekyll 博客主题的改版和重构"
+date:   2016-03-12 11:40:18 +0800
+categories: jekyll
+tags: jekyll 端口 markdown Foxit RubyGems HTML CSS
+author: Haoyang Gao
+mathjax: true
+---
+```
+
+These follow code is for making contents.
+```
+* content
+{:toc}
+```
+
+You can use 4 wraps as a excerpt separator. The words before separator as excerpt show in the index page. When you enter the post page, you can read full article.
+
+The wraps config is in the file `_config.yml`, as follows:
+
+```yml
+# excerpt
+excerpt_separator: "\n\n\n\n"
+```
+
+You should use markdown syntax to write article, just like write readme in github.
+
+You can use 3 \`\`\` to write code block.
+
+### 5. Local launch
+
+use command:
+
+```
+jekyll s
+```
+
+Terminal shows:
+
+```
+Configuration file: E:/GitWorkSpace/blog/_config.yml
+            Source: E:/GitWorkSpace/blog
+       Destination: E:/GitWorkSpace/blog/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating...
+                    done in 6.33 seconds.
+  Please add the following to your Gemfile to avoid polling for changes:
+    gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+ Auto-regeneration: enabled for 'E:/GitWorkSpace/blog'
+Configuration file: E:/GitWorkSpace/blog/_config.yml
+    Server address: http://127.0.0.1:4000/
+  Server running... press ctrl-c to stop.
+```
+
+Visit localhost:4000 to see your blog!!!
+
+### 6. Push to GitHub
+
+If there is nothing wrong, push code to your github!
+
+## Donate
+
+You can also donate me for a coffee, and I'll do better. Thanks.
+
+|                                                                     PayPal                                                                     |                                 Wechat Pay                                  |                                   Alipay                                    |
+|:----------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------:|:---------------------------------------------------------------------------:|
+| [![PayPal](https://www.paypalobjects.com/webstatic/paypalme/images/pp_logo_small.png)<br>Donate via PayPal ](https://www.paypal.me/gaohaoyang) | ![wechat](http://ww2.sinaimg.cn/large/7011d6cfjw1f3bkdw3bslj206z06q3z6.jpg) | ![alipay](http://ww2.sinaimg.cn/large/7011d6cfjw1f3bk8ikzoij20740743z5.jpg) |
+
+
+Thanks these friends!!!
+
+* 2017.05.25 received Wechat user ¥1.00
+* 2017.05.19 received 风之筝 ¥6.66
+* 2017.05.16 received 张驰 ¥6.00
+* 2017.05.03 received 希成 ¥6.66
+* 2017.04.24 received deezer ¥10.00
+* 2017.04.13 received Abraham Xiao ¥30.00
+* 2017.04.11 received Wechat user ¥4.00
+* 2017.04.01 received Elvin Zeng ¥6.66
+* 2017.03.13 received Wechat user ¥6.66
+* 2017.03.04 received 史莱姆 ¥9.90
+* 2017.03.02 received 梦想小熊 ¥6.66
+* 2017.02.27 received 夏友杰 ¥6.66
+* 2017.02.26 received 兰缘小妖 ¥10.00
+* 2017.02.25 received Wechat user ¥6.66
+* 2017.02.22 received Wechat user ¥6.66
+* 2017.02.15 received Wechat user ¥10.00
+* 2017.02.06 received Light ¥10.24
+* 2017.01.15 received Wechat user ¥6.66
+* 2016.12.17 received HitNoah ¥12.00
+* 2016.12.09 received 情融 ¥6.60
+* 2016.11.25 received Wechat user ¥6.66
+* 2016.11.16 received Wechat user ¥1.00
+* 2016.10.24 received 奇峰 ¥6.66
+* 2016.10.21 received 旭廷 ¥10.00
+* 2016.09.25 received 鑫 ¥6.66
+* 2016.08.25 received Erlend Aakre $2.50
+* 2016.08.10 received Wechat user ¥4.40
+* 2016.07.25 received 邓炳初 ¥6.66
+* 2016.07.11 received 彦风 ¥6.66
+* 2016.07.07 received Klci ¥2.50
+* 2016.05.08 received 1057 ¥10.57
+* 2016.05.07 received 吴林 ¥2
+* 2016.04.29 received 北归 ¥10
+* 2016.04.28 received 魏楚阳_Brian ¥2
+* 2016.04.28 received 薛彬 ¥8.8
+
+
+## Update Log
+
+### 2017.2.28
+
+- `[^]` fix smoothScroll bug in Tencent webview like wechat and qq.  [#22](https://github.com/Gaohaoyang/gaohaoyang.github.io/issues/22), [#48](https://github.com/Gaohaoyang/gaohaoyang.github.io/issues/48)
+
+### 2016.6.20
+
+* `[+]` Add next post and previous post link in post page.
+* `[^]` Change the sort of font-family to avoid full-width half-width characters mistake.
+* `[^]` Fix bug in tags cloud when division by zero. [#26](https://github.com/Gaohaoyang/gaohaoyang.github.io/issues/26), [#28](https://github.com/Gaohaoyang/gaohaoyang.github.io/issues/28), [#30](https://github.com/Gaohaoyang/gaohaoyang.github.io/issues/30)
+
+### 2016.5.11 v2.0.1
+
+* `[^]` Optimized code, Extracting common code to `comments.html`
+* `[+]` Add Google Analysis and Baidu Statistics
+* `[+]` Update README, add usage
+* `[+]` Add `favicon.ico`
+* `[^]` Fix bug at contents
+* `[^]` Change the content scroll bar CSS style（Only for `webkit` browser kernel）
+* `[^]` Change tag a color at demo page
+* `[+]` Add busuanzi counter, show the views count at footer
+* `[+]` Add back to top button
+
+### 2016.4.27 v2.0.0
+
+* `[^]` Rewrite all codes based on jekyll 3.1.2
+* `[+]` Add excerpt at index page
+* `[+]` Add recently post, categories and tags cloud at index page
+* `[+]` Add light shadow at navbar
+* `[+]` Add archives, categories, tags page
+* `[+]` Add collections page
+* `[+]` Add comments plugin with disqus or duoshuo
+* `[+]` Mobile Adaptation
+* `[+]` Fix post contents to the right side while scrolling page
+* `[+]` Fix footer at the bottom when page height is smaller than window height
+* `[^]` Use github flavored markdown to write code block(Fenced code blocks)
+* `[^]` Rewrite the demo page with Masonry
+* `[-]` Remove jQuery and BootStrap
+
+About my old blog theme, I won't maintain any more. And I put the code at  [Gaohaoyang/old-blog](https://github.com/Gaohaoyang/old-blog).
 
 ## License
 
-The theme is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+[MIT License](https://github.com/Gaohaoyang/gaohaoyang.github.io/blob/master/LICENSE.md)
