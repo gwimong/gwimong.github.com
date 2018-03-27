@@ -1,16 +1,17 @@
-# About this Cool Concise Jekyll Blog Theme 🤘🤘🤘
+It is mainly a blog to post program technical data.
+The main concern are Java, Web, Security, Linux, and various other technologies.
 
-[![GitHub stars](https://img.shields.io/github/stars/Gaohaoyang/gaohaoyang.github.io.svg)](https://github.com/Gaohaoyang/gaohaoyang.github.io/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/Gaohaoyang/gaohaoyang.github.io.svg)](https://github.com/Gaohaoyang/gaohaoyang.github.io/network)
-[![GitHub issues](https://img.shields.io/github/issues/Gaohaoyang/gaohaoyang.github.io.svg)](https://github.com/Gaohaoyang/gaohaoyang.github.io/issues)
-[![GitHub release](https://img.shields.io/github/release/Gaohaoyang/gaohaoyang.github.io.svg)](https://github.com/Gaohaoyang/gaohaoyang.github.io/releases)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Gaohaoyang/gaohaoyang.github.io/master/LICENSE)
 
-**[中文版 Chinese README 请点击这里 🇨🇳](https://github.com/Gaohaoyang/gaohaoyang.github.io/blob/master/README-zh-cn.md)**
+It used Jekyll blog theme.
 
-With the escalation of jekyll version, but I also want to reconstruct my older blog theme, so I did reconstruction and added some features recently. My new blog theme will still be stored in this repository. I will also use this theme in the future. Now I have done basically, then I will focus on issues that users opend to make theme better.
+## About this Cool Concise Jekyll Blog Theme 
 
-**My Blog Url: [http://gaohaoyang.github.io/](http://gaohaoyang.github.io/)**. If you like this theme, you can give me a star to encourage me. Welcome everyone to use it.
+[![GitHub stars](https://img.shields.io/github/stars/gwimong/gwimong.github.io.svg)](https://github.com/gwimong/gwimong.github.io/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/gwimong/gwimong.github.io.svg)](https://github.com/gwimong/gwimong.github.io/network)
+[![GitHub issues](https://img.shields.io/github/issues/gwimong/gwimong.github.io.svg)](https://github.com/gwimong/gwimong.github.io/issues)
+[![GitHub release](https://img.shields.io/github/release/gwimong/gwimong.github.io.svg)](https://github.com/gwimong/gwimong.github.io/releases)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/gwimong/gwimong.github.io/master/LICENSE)
+
 
 ## Content
 
