@@ -13,5 +13,4 @@ It used Jekyll blog theme.
 -->
 
 ## License
-
-[MIT License](https://github.com/gwimong/gwimong.github.io/blob/master/LICENSE)
+[![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/gwimong/gwimong.github.io/blob/master/LICENSE)
