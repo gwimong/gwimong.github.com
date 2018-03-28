@@ -4,3 +4,9 @@ _site
 .vscode
 .idea
 .DS_Store
+
+# packages #
+*.swp
+*.dmg
+*.iso
+*.tar
