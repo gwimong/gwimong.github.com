@@ -1,7 +1,9 @@
 ---
 layout: default
 ---
-<!-- <div id="disqus_thread"></div> -->
+
+
+<div id="disqus_thread"></div>
 <script>
 
 /**
@@ -21,4 +23,31 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
 
+
+
+<div class="page clearfix" post>
+    <div class="left">
+        <h1>{{page.title}}</h1>
+        <hr>
+        {{content}}
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    Content
+                </div>
+                <ul id="content-side" class="content-ul">
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+<script src="{{ "/js/pageContent.js " | prepend: site.baseurl }}" charset="utf-8"></script>
