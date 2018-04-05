@@ -85,8 +85,6 @@ layout: default
                     <li><a href="#comments">Comments</a></li>
                 </ul>
             </div>
-            <!-- 其他div框放到这里 -->
-            <!-- <div class="side">bbbb</div> -->
         </div>
     </div>
 </div>
@@ -102,3 +100,14 @@ layout: default
 }());
 </script>
 <script src="{{ "/js/pageContent.js " | prepend: site.baseurl }}" charset="utf-8"></script>
+
+
+<!-- 코드 접기/펼치기 -->
+<script language="JavaScript" type="text/javascript">
+function paragraph_toggle(obj) {
+	  if (obj.style.display == 'none')
+		      obj.style.display = 'block';
+	    else if (obj.style.display == 'block')
+			    obj.style.display = 'none';
+};
+</script>
