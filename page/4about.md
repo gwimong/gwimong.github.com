@@ -24,6 +24,9 @@ Programmers...may be?
 * [Hackerone](https://hackerone.com/gwimong)
 * email：scarcedream@gmail.com
 
-## Comments
+## Visitor Statistics
+{% include analytics.html %}
 
+## Comments
 {% include comments.html %}
+
