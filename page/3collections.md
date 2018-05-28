@@ -9,38 +9,30 @@ type: page
 * content
 {:toc}
 
-
-## Programing
-### JavaScript
-
-
+---
+### JavaScript   
 * [You Don't Know JS (book series)](https://github.com/getify/You-Dont-Know-JS)
+* [YOU MIGHT NOT NEED JQUERY PLUGINS](http://youmightnotneedjqueryplugins.com/)
 
-- [YOU MIGHT NOT NEED JQUERY PLUGINS](http://youmightnotneedjqueryplugins.com/)
+### ES2018   
 
-### ES2018
+### NodeJS   
 
-### NodeJS
-
-
-## Framework
-
-### Vue
-
+### Vue   
 * [awesome-vue](https://github.com/vuejs/awesome-vue)
 
-### React
-
+### React   
 * [Thinking in React](http://facebook.github.io/react/docs/thinking-in-react.html)
 
-### AngularJS
-
+### AngularJS   
 * [AngularJS api ](https://docs.angularjs.org/api)
 
+### Git   
+* [Learn git branching](https://learngitbranching.js.org/)
 
-## Other blogs
+### Other blogs
 
 
-## Comments
+# Comments
 
 {% include comments.html %}
