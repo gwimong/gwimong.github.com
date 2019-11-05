@@ -1,0 +1,90 @@
+I"	<h1 id="openjdk">OpenJDK?</h1>
+<p>OpenJDK는 Sun이 Oracle에 합병되기 전에 JDK를 오픈소스화하기 위해 2007년에  시작된 프로젝트입니다.<br />
+Sun이 Thrid-party 라이브러리 저작권자에 오픈 소스로 공개할 수 있도록 설득하였으나, 잘되지 않았고 저작권자가 오픈소스화를 거부한 일부 컴포넌트를 제외한 나머지 JDK 소스코드를 기반으로 OpenJDK 프로젝트가 수행 되었습니다.</p>
+
+<p>이 후 Oracle이 Sun을 합병하면서 OpenJDK에 몇 가지 기능들을 더 추가하여 OracleJDK를 제공하고있습니다.</p>
+
+<p>JDK6에서는 OpenJDK와 OracleJDK의 성능 차이 및 이슈들이 좀 많다고 합니다. <br />
+하지만 JDK7부터는 거의 동일하다고 하네요. <br />
+(Oracle은 OpenJDK 프로젝트를 주도하는 주체이며, OracleJDK는 OpenJDK를 기반으로 구현)</p>
+
+<h1 id="oraclejdk-설치">OracleJDK 설치</h1>
+
+<ol>
+  <li>기존에 설치 되어 있는 OpenJDK 삭제
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[root@localhost /] rpm -qa | grep
+java-1.6.0-openjdk-devel-1.6.0.0-11.1.13.4.el6.x86_64
+java-1.8.0-openjdk-1.8.0.20-3.b26.el6.x86_64
+java-1.7.0-openjdk-1.7.0.65-2.5.1.2.el6_5.x86_64
+java-1.8.0-openjdk-headless-1.8.0.20-3.b26.el6.x86_64
+[root@localhost /] yum remove java-1.6.0-openjdk-devel-1.6.0.0-11.1.13.4.el6.x86_64
+[root@localhost /] yum remove java-1.8.0-openjdk-1.8.0.20-3.b26.el6.x86_64
+[root@localhost /] yum remove java-1.7.0-openjdk-1.7.0.65-2.5.1.2.el6_5.x86_64
+[root@localhost /] yum remove java-1.8.0-openjdk-headless-1.8.0.20-3.b26.el6.x86_64
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>JDK 다운로드 <br />
+ Oracle 홈페이지에서 설치하고자하는 JDK를 <a href="http://www.oracle.com/technetwork/java/javase/downloads"><u>다운로드</u></a></p>
+  </li>
+  <li>다운로드한 JDK 압축 해제
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[root@localhost /]mv  jdk-8u111-linux-x64.tar.gz /usr/local/
+[root@localhost /]cd /usr/local
+[root@localhost /]gunzip jdk-8u111-linux-x64.tar.gz
+[root@localhost /]tar -xvf jdk-8u111-linux-x64.tar.gz
+</code></pre></div>    </div>
+  </li>
+  <li>심볼링 링크 생성
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[root@localhost /]ln -s jdk1.8.0_111 java 
+</code></pre></div>    </div>
+  </li>
+  <li>환경변수 설정
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[root@localhost /]vi /etc/profile
+</code></pre></div>    </div>
+    <blockquote>
+      <p>…. 생략 … <br />
+#가장 아래에 다음 내용 추가 <br />
+export JAVA_HOME=/usr/local/java <br />
+export PATH=$PATH:$JAVA_HAME/bin <br />
+export CLASSPATH=”.”</p>
+    </blockquote>
+  </li>
+  <li>환경변수 적용
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[root@localhost /]source /etc/profile
+</code></pre></div>    </div>
+  </li>
+  <li>설치된 Java 버전 확인
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[root@localhost /]java -version
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<h1 id="openjdk를-삭제하지-않고-변경하는-방법">OpenJDK를 삭제하지 않고 변경하는 방법</h1>
+
+<ol>
+  <li>
+    <p>OracleJDK 설치.</p>
+  </li>
+  <li>현재 설치된 java 위치 확인
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[root@localhost /]which java
+/usr/bin/java
+[root@localhost /]ls -al /usr/bin/java
+lrwxrwxrwx 1 root root 22 Apr 13 18:52 /usr/bin/java -&gt; /etc/alternatives/java
+[root@localhost /]ls -al /etc/alternatives/java
+lrwxrwxrwx 1 root root 35 Apr 13 18:52 /etc/alternatives/java -&gt; /usr/lib/jvm/jre-1.5.0-gcj/bin/java
+</code></pre></div>    </div>
+  </li>
+  <li>java 심볼링 링크 변경
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[root@localhost /]rm /etc/alternatives/java
+[root@localhost /]ln -s /usr/local/java /etc/alternatives/java
+</code></pre></div>    </div>
+  </li>
+  <li>변경된 Java 버전 확인
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[root@localhost /]java -version
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+:ET

@@ -2,8 +2,8 @@
 layout: post
 title: "Jekyll 설치"
 date: 2019-03-06 20:00:00+0900
-categories: Linux
-tags: Linux Ubuntu18.04 Tools Ruby
+categories: Utillity
+tags: Ubuntu18.04 LubyGem
 mathjax: true
 ---
 
@@ -18,11 +18,9 @@ OS : Ubuntu18.04LTS on Windows10
 # 필요 프로그램 설치
 
 - Ruby
-- NodeJS
 ~~~
 > sudo apt install ruby
 > sudo apt install ruby-dev
-> sudo apt install nodejs
 ~~~
 
 

@@ -1,0 +1,320 @@
+I"59<h1 id="주요-옵션">주요 옵션</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Abbreviation</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>‘autoindent’</td>
+      <td>‘ai’</td>
+      <td>Copy indent from current line when starting a new line.</td>
+    </tr>
+    <tr>
+      <td>‘cindent’</td>
+      <td>‘cln’</td>
+      <td>Enables automatic C program indenting.</td>
+    </tr>
+    <tr>
+      <td>‘smartindent’</td>
+      <td>‘si’</td>
+      <td>Do smart autoindenting when starting a new line.</td>
+    </tr>
+    <tr>
+      <td>‘tabstop’</td>
+      <td>‘ts’</td>
+      <td>Number of spaces that a <Tab> in the file counts for.</Tab></td>
+    </tr>
+    <tr>
+      <td>‘shiftwidth’</td>
+      <td>‘sw’</td>
+      <td>Number of spaces to use for each step of (auto)indent</td>
+    </tr>
+    <tr>
+      <td>‘visualbell’</td>
+      <td>‘vb’</td>
+      <td>Use visual bell instead of beeping.</td>
+    </tr>
+    <tr>
+      <td>‘number’</td>
+      <td>‘nu’</td>
+      <td>Print the line number in front of each line.</td>
+    </tr>
+    <tr>
+      <td>‘ruler’</td>
+      <td>‘ru’</td>
+      <td>Show the line and column number of the cursor position, separated by a comma.</td>
+    </tr>
+    <tr>
+      <td>‘title’</td>
+      <td> </td>
+      <td>When on, the title of the window will be set to the value of ‘titlestring’</td>
+    </tr>
+    <tr>
+      <td>‘warp’</td>
+      <td> </td>
+      <td>This option changes how text is displayed.</td>
+    </tr>
+    <tr>
+      <td>‘cursorline’</td>
+      <td>‘cul’</td>
+      <td>Highlight the screen line of the cursor with CursorLine.</td>
+    </tr>
+    <tr>
+      <td>‘linebreak’</td>
+      <td>‘lbr’</td>
+      <td>If on Vim will wrap long lines at a character in ‘breakat’ rather than at the last character that fits on the screen.</td>
+    </tr>
+    <tr>
+      <td>‘showmatch’</td>
+      <td>‘sm’</td>
+      <td>When a bracket is inserted, briefly jump to the matching one.</td>
+    </tr>
+    <tr>
+      <td>‘background’</td>
+      <td>‘bg’</td>
+      <td>When set to “dark”, Vim will try to use colors that look good on a dark background.  When set to “light”, Vim will try to use colors that look good on a light background.</td>
+    </tr>
+    <tr>
+      <td>‘guifont’</td>
+      <td>‘gnf’</td>
+      <td>This is a list of fonts which will be used for the GUI version of Vim.</td>
+    </tr>
+    <tr>
+      <td>‘wrapscan’</td>
+      <td>‘ws’</td>
+      <td>Searches wrap around the end of the file.</td>
+    </tr>
+    <tr>
+      <td>‘hlsearch’</td>
+      <td>‘hls’</td>
+      <td>When there is a previous search pattern, highlight all its matches.</td>
+    </tr>
+    <tr>
+      <td>‘ignorecase’</td>
+      <td>‘ic’</td>
+      <td>Ignore case in search patterns.</td>
+    </tr>
+    <tr>
+      <td>‘incsearch’a</td>
+      <td>‘is’</td>
+      <td>While typing a search command, show where the pattern, as it was typed so far, matches.</td>
+    </tr>
+    <tr>
+      <td>‘backspace’</td>
+      <td>‘bs’</td>
+      <td>Influences the working of &lt;BS&gt;, &lt;Del&gt;, CTRL-W and CTRL-U in Insert mode.</td>
+    </tr>
+    <tr>
+      <td>‘history’</td>
+      <td>‘hi’</td>
+      <td>A history of “:” commands, and a history of previous search patterns are remembered.</td>
+    </tr>
+    <tr>
+      <td>‘fileencoding’</td>
+      <td>‘fencs’</td>
+      <td>This is a list of character encodings considered when starting to edit an existing file.</td>
+    </tr>
+    <tr>
+      <td>‘backup’</td>
+      <td>‘bk’</td>
+      <td>Make a backup before overwriting a file.</td>
+    </tr>
+    <tr>
+      <td>‘syntax’</td>
+      <td>‘syn’</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><a href="http://vimdoc.sourceforge.net/htmldoc/options.html">전체 옵션</a></p>
+
+<h1 id="옵션-설정">옵션 설정</h1>
+<ul>
+  <li><code class="highlighter-rouge">on/off</code> 로 값을 설정.
+    <div class="language-viml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">set</span> <span class="k">number</span>              <span class="s2">" number 옵션을 Onset nonumber            "</span> <span class="k">number</span> 옵션을 Off
+</code></pre></div>    </div>
+  </li>
+  <li>설정 값이 <code class="highlighter-rouge">숫자</code>인 옵션
+    <div class="language-viml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">set</span> <span class="k">history</span><span class="p">=</span><span class="m">1000</span>        " <span class="k">history</span> 옵션 값을 <span class="m">1000</span>으로 설정<span class="p">.</span>
+</code></pre></div>    </div>
+  </li>
+  <li>설정 값이 <code class="highlighter-rouge">문자열</code>인 옵션
+    <div class="language-viml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">set</span> background<span class="p">=</span><span class="nb">dark</span>     " backupground 옵션을 dark로 설정<span class="p">.</span>
+</code></pre></div>    </div>
+  </li>
+  <li>여러 옵션을 지정
+    <div class="language-viml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">set</span> guifont<span class="p">=</span>NanumGothicCoding<span class="p">:</span>h12<span class="p">:</span>cHANGEUL      " guifont 설정<span class="p">.</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="옵션-적용">옵션 적용</h1>
+<ul>
+  <li>현재 사용 중인 vim에 적용
+명령 모드에서 옵션 입력
+    <div class="language-viml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">:</span><span class="k">set</span> <span class="k">number</span>
+</code></pre></div>    </div>
+  </li>
+  <li>항상 vim에 옵션 적용
+/etc/vim/vimrc에 해당 옵션을 추가
+    <div class="language-viml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">set</span> <span class="k">number</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="현재-적용-중인-vim-설정">현재 적용 중인 vim 설정</h1>
+<div class="language-viml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">" All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by</span>
+<span class="c">" the call to :runtime you can find below.  If you wish to change any of those</span>
+<span class="c">" settings, you should do it in this file (/etc/vim/vimrc), since debian.vim</span>
+<span class="c">" will be overwritten everytime an upgrade of the vim packages is performed.</span>
+<span class="c">" It is recommended to make changes after sourcing debian.vim since it alters</span>
+<span class="c">" the value of the 'compatible' option.</span>
+
+<span class="c">" This line should not be removed as it ensures that various options are</span>
+<span class="c">" properly set to work with the Vim-related packages available in Debian.</span>
+runtime<span class="p">!</span> debian<span class="p">.</span><span class="k">vim</span>
+
+<span class="c">" Uncomment the next line to make Vim more Vi-compatible</span>
+<span class="c">" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous</span>
+<span class="c">" options, so any other options should be set AFTER setting 'compatible'.</span>
+<span class="c">"set compatible</span>
+
+<span class="c">" Vim5 and later versions support syntax highlighting. Uncommenting the next</span>
+<span class="c">" line enables syntax highlighting by default.</span>
+<span class="k">if</span> has<span class="p">(</span><span class="s2">"syntax"</span><span class="p">)</span>
+  syntax <span class="k">on</span>
+<span class="k">endif</span>
+
+<span class="c">" If using a dark background within the editing area and syntax highlighting</span>
+<span class="c">" turn on this option as well</span>
+<span class="c">"set background=dark</span>
+
+<span class="c">" Uncomment the following to have Vim jump to the last position when</span>
+<span class="c">" reopening a file</span>
+<span class="c">"if has("autocmd")</span>
+<span class="c">"  au BufReadPost * if line("'\"") &gt; 1 &amp;&amp; line("'\"") &lt;= line("$") | exe "normal! g'\"" | endif</span>
+<span class="c">"endif</span>
+
+<span class="c">" Uncomment the following to have Vim load indentation rules and plugins</span>
+<span class="c">" according to the detected filetype.</span>
+<span class="c">"if has("autocmd")</span>
+<span class="c">"  filetype plugin indent on</span>
+<span class="c">"endif</span>
+
+<span class="c">" The following are commented out as they cause vim to behave a lot</span>
+<span class="c">" differently from regular Vi. They are highly recommended though.</span>
+<span class="k">set</span> showcmd		" Show <span class="p">(</span>partial<span class="p">)</span> command <span class="k">in</span> status line<span class="p">.</span>
+<span class="c">"set showmatch		" Show matching brackets.</span>
+<span class="c">"set ignorecase		" Do case insensitive matching</span>
+<span class="c">"set smartcase		" Do smart case matching</span>
+<span class="c">"set incsearch		" Incremental search</span>
+<span class="c">"set autowrite		" Automatically save before commands like :next and :make</span>
+<span class="c">"set hidden		" Hide buffers when they are abandoned</span>
+<span class="c">"set mouse=a		" Enable mouse usage (all modes)</span>
+
+<span class="c">" Source a global configuration file if available</span>
+<span class="k">if</span> filereadable<span class="p">(</span><span class="s2">"/etc/vim/vimrc.local"</span><span class="p">)</span>
+  source <span class="sr">/etc/</span><span class="k">vim</span>/vimrc<span class="p">.</span>local
+<span class="k">endif</span>
+
+
+<span class="c">"----- INDENT -----</span>
+<span class="k">set</span> autoindent
+<span class="k">set</span> cindent
+<span class="k">set</span> smartindent
+<span class="k">set</span> tabstop<span class="p">=</span><span class="m">2</span>
+<span class="k">set</span> shiftwidth<span class="p">=</span><span class="m">2</span>
+
+<span class="c">"----- VIEW -----</span>
+<span class="k">set</span> visualbell
+<span class="k">set</span> <span class="k">number</span>
+<span class="k">set</span> ruler
+<span class="k">set</span> title
+<span class="k">set</span> wrap
+<span class="k">set</span> cursorline
+<span class="k">set</span> linebreak
+<span class="k">set</span> showmatch
+<span class="k">set</span> guifont<span class="p">=</span>NanumGothicCoding<span class="p">:</span>h12<span class="p">:</span>cHANGEUL
+
+<span class="c">"----- SEARCH -----</span>
+<span class="k">set</span> nowrapscan
+<span class="k">set</span> hlsearch
+<span class="k">set</span> ignorecase
+<span class="k">set</span> incsearch
+
+<span class="c">"----- EDIT -----</span>
+<span class="k">set</span> backspace<span class="p">=</span>eol<span class="p">,</span><span class="k">start</span><span class="p">,</span>indent
+<span class="k">set</span> <span class="k">history</span><span class="p">=</span><span class="m">1000</span>
+<span class="k">set</span> fencs<span class="p">=</span>ucs<span class="p">-</span>bom<span class="p">,</span>utf<span class="m">-8</span><span class="p">,</span>euc<span class="p">-</span>kr<span class="p">,</span>latin1
+<span class="k">set</span> fileencoding<span class="p">=</span>utf<span class="m">-8</span>
+<span class="k">set</span> nobackup
+
+<span class="c">"&lt;===== VUNDLE config Start =====&gt;</span>
+<span class="c">" Brief help</span>
+<span class="c">" :PluginList       - lists configured plugins</span>
+<span class="c">" :PluginInstall    - installs plugins; append `!` to update or just</span>
+<span class="c">" :PluginUpdate</span>
+<span class="c">" :PluginSearch foo - searches for foo; append `!` to refresh local cache</span>
+<span class="c">" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal</span>
+<span class="c">" </span>
+<span class="c">" see :h vundle for more details or wiki for FAQ</span>
+<span class="c">" Put your non-Plugin stuff after this line</span>
+<span class="c">"</span>
+<span class="k">set</span> nocompatible
+<span class="k">filetype</span> off
+<span class="k">set</span> rtp<span class="p">+=~</span><span class="sr">/.vim/</span>bundle/Vundle<span class="p">.</span><span class="k">vim</span>
+<span class="k">let</span> path<span class="p">=</span><span class="s1">'~/.vim/bundle'</span>
+<span class="k">call</span> vundle#begin<span class="p">(</span>path<span class="p">)</span>
+
+Plugin <span class="s1">'gmarik/Vundle.vim'</span>
+Plugin <span class="s1">'The-NERD-Tree'</span>
+
+<span class="c">"----- airline -----</span>
+Plugin <span class="s1">'bling/vim-airline'</span>
+Plugin <span class="s1">'Syntastic'</span>
+Plugin <span class="s1">'tpope/vim-fugitive'</span>
+
+<span class="c">"----- Color plugin -----</span>
+<span class="c">"Plugin 'molokai'</span>
+<span class="c">"Plugin 'aradunovic/perun.vim'</span>
+
+<span class="c">"----- Git plugin -----</span>
+Plugin <span class="s1">'airblade/vim-gitgutter'</span>
+Plugin <span class="s1">'gitview'</span>
+
+<span class="c">"Plugin 'Indent-Guides'</span>
+Plugin <span class="s1">'nathanaelkane/vim-indent-guides'</span>
+Plugin <span class="s1">'pangloss/vim-simplefold'</span>
+
+<span class="k">call</span> vundle#<span class="k">end</span><span class="p">()</span>
+<span class="k">filetype</span> plugin indent <span class="k">on</span>
+<span class="c">"&lt;===== VUNDLE config End =====&gt;</span>
+
+
+<span class="c">"----- VIM-AIRLINE -----</span>
+<span class="k">set</span> laststatus<span class="p">=</span><span class="m">2</span>
+
+<span class="c">"---- COLOR SCHEME -----</span>
+<span class="c">"syntax on</span>
+<span class="c">"syntax enable</span>
+<span class="c">"colorscheme perun</span>
+
+<span class="c">":set listchars=tab:\|\ </span>
+<span class="c">":set list</span>
+<span class="c">"</span>
+
+<span class="k">let</span> <span class="nv">g:indent_guides_enable_on_vim_startup</span> <span class="p">=</span> <span class="m">1</span>
+<span class="k">let</span> <span class="nv">g:SimpylFold_docstring_preview</span><span class="p">=</span><span class="m">1</span>
+
+<span class="k">colorscheme</span> molokai
+<span class="k">let</span> <span class="nv">g:indent_guides_start_level</span> <span class="p">=</span> <span class="m">2</span>
+<span class="k">let</span> <span class="nv">g:indent_guides_guide_size</span> <span class="p">=</span> <span class="m">1</span>
+
+</code></pre></div></div>
+:ET

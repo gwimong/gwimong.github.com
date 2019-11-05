@@ -2,8 +2,8 @@
 layout: post
 title: "vim plugin 설정"
 date: 2018-04-05 17:45:00+0900
-categories: Linux
-tags: Linux Vim Tools
+categories: Utillity
+tags: Vim Plugin Configure
 mathjax: true
 ---
 

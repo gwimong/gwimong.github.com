@@ -2,8 +2,8 @@
 layout: post
 title: "vim 설정"
 date: 2018-04-04 18:00:00+0900
-categories: Linux
-tags: Linux Vim Tools
+categories: Utillity
+tags: Vim Configure
 mathjax: true
 ---
 
