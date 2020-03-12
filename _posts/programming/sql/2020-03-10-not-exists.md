@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "데이터 존재 유무 확인하기(In보다 Exists를 사용하자)"
+title: "데이터 유무 확인을 위한 SQL 구현"
+subtitle: "IN보다 Exists를 사용하자"
 date: 2020-03-10 18:13:00+0900
 categories: Database
 tags: SQL MySQL
