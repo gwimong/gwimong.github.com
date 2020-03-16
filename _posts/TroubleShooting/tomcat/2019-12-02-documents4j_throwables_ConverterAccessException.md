@@ -2,7 +2,7 @@
 layout: post
 title: "Tomcat 배포시 documents4j ConverterAccessException"
 date: 2019-12-02 12:43:00+0900
-categories: Tomcat
+categories: TroubleShooting
 tags: Tomcat Documents4j Java
 mathjax: true
 ---
