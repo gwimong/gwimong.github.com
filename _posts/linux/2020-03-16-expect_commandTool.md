@@ -259,12 +259,12 @@ sub file_run {
   return EC_SUCCESS;
 }
 ```
-[[전체 소스]](https://github.com/gwimong/exampleCode/blob/master/expect/commandExpect.pl)
+[[전체 소스]](https://github.com/gwimong/exampleCode/tree/master/expect/commandRun)
 
 ## 사용법
 원격으로 로그인 후 입력된 명령을 수행합니다.
 ```bash
-#commandExpect.pl -h [host] -u [userId] -p [userPassword] -rp [host's root password] -C [Command String]
+#commandRun.pl -h [host] -u [userId] -p [userPassword] -rp [host's root password] -C [Command String]
 ```
 ### Options
   - -F [filePath] : 파일 모드로 수행. filePath는 원격에서 실행할 명령어 파일
