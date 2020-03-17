@@ -4,7 +4,7 @@ title: "Expect로 다수의 서버를 관리하자(4)"
 subtitle: "범용적으로 사용 할 수 있는 코드를 구현해 보자"
 date: 2020-03-16 16:00:00+0900
 categories: Linux
-tags: Expect Perl Utility 
+tags: Expect Perl Utility Script Programming
 mathjax: true
 ---
 

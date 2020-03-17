@@ -4,7 +4,7 @@ title: "Expect로 다수의 서버를 관리하자(2)"
 subtitle: "Perl로 Expect 구현하기"
 date: 2020-03-12 14:00:00+0900
 categories: Linux
-tags: Expect Perl Utility
+tags: Expect Perl Utility Script Programming
 mathjax: true
 ---
 

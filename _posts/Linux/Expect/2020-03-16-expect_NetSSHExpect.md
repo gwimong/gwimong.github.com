@@ -4,7 +4,7 @@ title: "Expect로 다수의 서버를 관리하자(3)"
 subtitle: "Perl로 Expect 모듈 - NetSSHExpect"
 date: 2020-03-16 14:00:00+0900
 categories: Linux
-tags: Expect Perl Utility NetSSHExpect
+tags: Expect Perl Utility NetSSHExpect Script Programming
 mathjax: true
 ---
 
