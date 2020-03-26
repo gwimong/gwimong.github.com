@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>[ACM] The 3n+1 Problem</title>
+    <meta name="description" content="UVa Online Judge Problem ID : 100 Problem Name : The 3n + 1 Problem3n+1 문제어떤 수열을 만들어내는 다음과 같은 알고리즘을 생각해보자. 어떤 정수 n에서 시작해 n이 짝수면 2로 나누고, 홀수면 3을 곱한 다음 1을 더한다. ...">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
+    <link rel="stylesheet" href="/css/main.css ">
+    <link rel="canonical" href="http://localhost:4000/2018/04/03/acm-100/">
+    <link rel="alternate" type="application/rss+xml" title="gwimong's blog" href="http://localhost:4000/feed.xml ">
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117259791-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-117259791-1');
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: { inlineMath: [["$","$"],["\\(","\\)"]] },
+    "HTML-CSS": {
+      linebreaks: { automatic: true, width: "container" }
+    }
+});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">gwimong's blog</a>
+        <small>Dev Engineer</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archive/">
+                        
+                            <i class="fa fa-archive"></i>Archives
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>Categories
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>Tags
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/collection/">
+                        
+                            <i class="fa fa-bookmark"></i>Collections
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/demo/">
+                        
+                            <i class="fa fa-play"></i>Demo
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>About
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117259791-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'google_analytics_id');
+</script>
+
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>[ACM] The 3n+1 Problem</h1>
+				
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2018-04-03
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Algorithm" title="Category: Algorithm" rel="category">Algorithm</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+
+            <div class="label-card">
+            
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#Program" title="Tag: Program" rel="tag">Program</a-->
+        <a href="/tag/#Program" title="Tag: Program" rel="tag">Program</a>&nbsp;
+    
+        <!--a href="/tag/#ACM" title="Tag: ACM" rel="tag">ACM</a-->
+        <a href="/tag/#ACM" title="Tag: ACM" rel="tag">ACM</a>
+    
+  
+
+</span>
+
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        <p>UVa Online Judge <br />
+Problem ID : 100 <br />
+Problem Name : The 3n + 1 Problem</p>
+
+<h1 id="3n1-문제">3n+1 문제</h1>
+
+<p>어떤 수열을 만들어내는 다음과 같은 알고리즘을 생각해보자. 어떤 정수 n에서 시작해 n이 짝수면 2로 나누고, 홀수면 3을 곱한 다음 1을 더한다. 이렇게 해서 새로 만들어진 숫자를 n으로 놓고 n = 1이 될 때까지 같은 작업을 계속 반복한다. 예를 들어, n=22이면 다음과 같은 수열이 만들어진다.</p>
+
+<p><br />
+<strong>22  11  34  17  52  26  13  40  20  10  5  16  8  4  2  1</strong></p>
+
+<p><br /></p>
+
+<p>아직 증명되진 않았지만 모든 정수 n에 대해 이 알고리즘을 적용시키면 결국에는 n=1에 이르게 되는 것으로 추측된다. 그리고 이 가설은 적어도 1,000,000까지의 정수에 대해서는 참이다.</p>
+
+<p>n이라는 값이 입력되었을 때 1이 나올 때까지 만들어진 수의 개수(1 포함)를 n의 사이클 길이라고 한다. 위에 있는 수열을 예로 들면 22의 사이클 길이는 16이다 i와 j라는 두 개의 수가 주어졌을 때 i와 j사이의 모든 수(i, j 포함)에 대해 최대 사이클 길이를 구하라</p>
+
+<p><br /></p>
+
+<h1 id="입-력">[입 력]</h1>
+<p>입력은 일련의 정수쌍 i와 j로 구성되며 한 줄에 한 쌍의 수가 입력된다. 모든 정수는 1,000,000보다 작고 0보다 크다.</p>
+<blockquote>
+  <p>[입력 예]<br />
+  1 10<br />
+  100 200<br />
+  201 210<br />
+  900 100<br /></p>
+</blockquote>
+
+<h1 id="출-력">[출 력]</h1>
+<p>각 정수쌍 i와 j에 대해 i와 j를 입력된 순서대로 출력하고 i와 j사이(i, j 포함)의 최대 사이클 길이를 출력한다. 이 세 수는 각각 하나씩의 스페이스로 구분되어야 하며 세 수가 모두 한 줄에 출력되어야 하고 입력된 각 줄마다 한 줄씩 출력해야 한다.</p>
+
+<blockquote>
+  <p>[출력 예]<br />
+  1 10 20<br />
+  100 200 125<br />
+  201 210 89<br />
+  900 1000 174<br /></p>
+</blockquote>
+
+<h1 id="source">Source</h1>
+<p>github : <a href="https://github.com/gwimong/algorithm/tree/master/acm/100">https://github.com/gwimong/algorithm/tree/master/acm/100</a></p>
+
+        </article>
+        <hr>
+
+        
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+        
+
+        <div class="post-recent">
+    <div class="pre">
+        
+        <p><strong>Previous:</strong> <a href="/2018/04/03/security-networkAttack/">네트워크 기반 공격 유형</a></p>
+        
+    </div>
+    <div class="nex">
+
+        
+        <p><strong>Next:</strong> <a href="/2018/04/04/vim_setting/">vim 설정</a></p>
+        
+    </div>
+</div>
+
+
+        <h2 id="comments">Comments</h2>
+        
+
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+
+    var disqus_config = function() {
+        this.page.url = 'http://localhost:4000/2018/04/03/acm-100/'; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://localhost:4000/2018/04/03/acm-100/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document,
+            s = d.createElement('script');
+
+        s.src = '//gwimong-github-io.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    Content
+                </div>
+                <ul id="content-side" class="content-ul">
+                    
+                    <li><a href="#comments">Comments</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="/js/pageContent.js " charset="utf-8"></script>
+
+
+<!-- 코드 접기/펼치기 -->
+<script language="JavaScript" type="text/javascript">
+function paragraph_toggle(obj) {
+	  if (obj.style.display == 'none')
+		      obj.style.display = 'block';
+	    else if (obj.style.display == 'block')
+			    obj.style.display = 'none';
+};
+</script>
+
+
+    <footer class="site-footer">
+    <div class="wrapper">
+        <p class="description">
+             mong's blog 
+        </p>
+        <p class="contact">
+            Contact me at: 
+			
+	            <a href="https://github.com/gwimong" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a> 
+			
+			
+				<a href="mailto:scarcedream@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+			
+			 
+			
+	            <a href="https://www.facebook.com/gwimong" title="Facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+			
+			 
+        </p>
+        <p class="power">
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+            <span>
+                Theme designed by <a href="https://github.com/Gaohaoyang">HyG</a>.
+            </span>
+        </p>
+    </div>
+</footer>
+
+    <div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/smooth-scroll.min.js " charset="utf-8"></script>
+    <script type="text/javascript">
+      smoothScroll.init({
+        speed: 500, // Integer. How fast to complete the scroll in milliseconds
+        easing: 'easeInOutCubic', // Easing pattern to use
+        offset: 20, // Integer. How far to offset the scrolling anchor location in pixels
+      });
+    </script>
+    <!-- <script src=" /js/scroll.min.js " charset="utf-8"></script> -->
+  </body>
+
+</html>

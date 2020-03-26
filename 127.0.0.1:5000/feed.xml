@@ -1,0 +1,1064 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gwimong's blog</title>
+    <description></description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 26 Mar 2020 11:04:31 +0900</pubDate>
+    <lastBuildDate>Thu, 26 Mar 2020 11:04:31 +0900</lastBuildDate>
+    <generator>Jekyll v4.0.0</generator>
+    
+      <item>
+        <title>Expect Tools 활용 - expect_mkpasswd</title>
+        <description>&lt;h1 id=&quot;소개&quot;&gt;소개&lt;/h1&gt;
+: generate new password, optionally apply it to a user&lt;br /&gt;
+비밀번호를 생성하여 사용자 계정에 자동으로 적용합니다.&lt;a href=&quot;https://helpmanual.io/man1/expect_mkpasswd&quot;&gt;[원문]&lt;/a&gt;
+
+&lt;h1 id=&quot;사용법&quot;&gt;사용법&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;비밀번호 생성하기
+    &lt;blockquote&gt;
+      아무런 매개 변수가 없으면 단순히 비밀번호를 생성하고 이를 표출합니다.
+      &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#expect_mkpassword&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;비빌번호를 생성하고 이를 계정에 적용
+    &lt;blockquote&gt;
+      사용자 계정명을 매개변수로 전달하면, 비밀번호를 생성하고, 이를 해당 계정에 적용합니다.
+      &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#expect_mkpassword [userId]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;옵션&quot;&gt;옵션&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;-l : 비밀번호 길이. (기본값 : 9)
+    &lt;ul&gt;
+      &lt;li&gt;-d : 비밀번호 최소 길이. (기본값: 2)&lt;/li&gt;
+      &lt;li&gt;-c : 비밀번호에 포함되어야 하는 최소 영문 소문자 수(기본값: 2)&lt;/li&gt;
+      &lt;li&gt;-C : 비밀번호에 포함되어야 하는 최소 영문 대문자 수(기본값: 2)&lt;/li&gt;
+      &lt;li&gt;-s : 비밀번호에 포함되어야 하는 최소 특수 문자 수(기본값 : 1)&lt;/li&gt;
+      &lt;li&gt;-p : 사용할 프로그램(기본적으로 /etc/ypasswd가 있으면 사용되며, 없는 경우 /bin/passwd가 사용)&lt;/li&gt;
+      &lt;li&gt;-2 : 비밀번호가 좀 더 알아보기 힘듬&lt;/li&gt;
+      &lt;li&gt;-v : 비밀번호 보여주기&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;예시&quot;&gt;예시&lt;/h1&gt;
+&lt;blockquote&gt;
+
+  &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#expect_mkpasswd -l 15 -d 3 -c 3 -C 3 -s 3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Tue, 17 Mar 2020 11:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2020/03/17/expect_mkpasswd/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/17/expect_mkpasswd/</guid>
+        
+        <category>Expect</category>
+        
+        <category>Utility</category>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Expect Tools 활용 - expect_autoexpect</title>
+        <description>&lt;h1 id=&quot;소개&quot;&gt;소개&lt;/h1&gt;
+: generate an Expect script from watching a session
+자동으로 Expect script를 생성합니다.&lt;a href=&quot;https://helpmanual.io/man1/expect_autoexpect&quot;&gt;[원문]&lt;/a&gt;
+
+&lt;h1 id=&quot;사용법&quot;&gt;사용법&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;아무런 매개 변수가 없으면 쉘을 기반으로 상호작용합니다.
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#expect_autoexpect&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    autoexpect 실행 후 해당 쉘 종료 시 expect script가 생성됩니다.
+  &lt;/li&gt;
+  &lt;li&gt;매개변수로 상호작용 할 프로그램 이름과 인자를 전달합니다.
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#expect_autoexpect [Target Program]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    autoexpect 실행 후 해당 프로그램 종료 시 expect script가 생성됩니다.
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;예시&quot;&gt;예시&lt;/h1&gt;
+&lt;h2 id=&quot;실행-예제&quot;&gt;실행 예제&lt;/h2&gt;
+&lt;img src=&quot;/resource/Expect/autoexpect.png&quot; alt=&quot;autoexpect_example&quot; /&gt;
+
+&lt;h2 id=&quot;생성-파일&quot;&gt;생성 파일&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/expect -f&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# This Expect script was generated by autoexpect on Tue Mar 17 11:29:00 2020&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Expect and autoexpect were both written by Don Libes, NIST.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Note that autoexpect does not guarantee a working script.  It&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# necessarily has to guess about certain things.  Two reasons a script&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# might fail are:&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 1) timing - A surprising number of programs (rn, ksh, zsh, telnet,&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# etc.) and devices discard or ignore keystrokes that arrive &quot;too&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# quickly&quot; after prompts.  If you find your new script hanging up at&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# one spot, try adding a short sleep just before the previous send.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Setting &quot;force_conservative&quot; to 1 (see below) makes Expect do this&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# automatically - pausing briefly before sending each character.  This&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# pacifies every program I know of.  The -c flag makes the script do&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# this in the first place.  The -C flag allows you to define a&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# character to toggle this mode off and on.&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;force_conservative 0  &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# set to 1 to force conservative mode even if&lt;/span&gt;
+			  &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# script wasn't run conservatively originally&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$force_conservative&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;send_slow &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1 .1&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	proc send &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;ignore arg&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt; .1
+		exp_send &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$arg&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 2) differing output - Some programs produce different output each time&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# they run.  The &quot;date&quot; command is an obvious example.  Another is&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ftp, if it produces throughput statistics at the end of a file&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# transfer.  If this causes a problem, delete these patterns or replace&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# them with wildcards.  An alternative is to use the -p flag (for&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# &quot;prompt&quot;) which makes Expect only look for the last line of output&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# (i.e., the prompt).  The -P flag allows you to define a character to&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# toggle this mode off and on.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Read the man page for more info.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# -Don&lt;/span&gt;
+
+
+&lt;span class=&quot;nb&quot;&gt;set timeout&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-1&lt;/span&gt;
+spawn &lt;span class=&quot;nv&quot;&gt;$env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SHELL&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+match_max 100000
+expect &lt;span class=&quot;nt&quot;&gt;-exact&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\]&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0;gmpark@DESKTOP-IMN1RJ9: ~&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;01;32mgmpark@DESKTOP-IMN1RJ9&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;00m:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;01;34m~&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;00m&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &quot;&lt;/span&gt;
+send &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ls -al&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+expect &lt;span class=&quot;nt&quot;&gt;-exact&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ls -al&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+total 100&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+drwxr-xr-x 1 gmpark gmpark   512 Mar 17 11:29 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0m&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;01;34m.&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0m&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+drwxr-xr-x 1 root   root     512 Sep 26 14:16 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;01;34m..&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0m&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+-rw-r--r-- 1 gmpark gmpark 15654 Mar 16 20:12 .bash_history&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+-rw-r--r-- 1 gmpark gmpark   220 Sep 26 14:16 .bash_logout&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+-rw-r--r-- 1 gmpark gmpark  3772 Nov 15 14:39 .bashrc&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+drwxr-xr-x 1 gmpark gmpark   512 Mar 16 16:25 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;01;34m.cache&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0m&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+drwxr-xr-x 1 gmpark gmpark   512 Mar 16 15:22 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;01;34m.cpan&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0m&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+drwxr-xr-x 1 gmpark gmpark   512 Nov  5 18:41 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;01;34m.gem&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0m&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+-rw-r--r-- 1 gmpark gmpark   129 Mar 16 16:25 .gitconfig&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+drwxr-xr-x 1 gmpark gmpark   512 Nov  5 19:06 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;01;34m.local&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0m&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+-rw-r--r-- 1 gmpark gmpark   807 Sep 26 14:16 .profile&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+drwxr-xr-x 1 gmpark gmpark   512 Oct 14 17:14 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;01;34m.ssh&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0m&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+-rw-r--r-- 1 gmpark gmpark     0 Nov  5 18:08 .sudo_as_admin_successful&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+drwxr-xr-x 1 gmpark gmpark   512 Nov 13 18:29 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;01;34m.vim&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0m&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+-rw-r--r-- 1 gmpark gmpark 34711 Mar 17 11:09 .viminfo&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+-rw-r--r-- 1 gmpark gmpark  9990 Nov 15 17:54 2019-11-14-type-of-certification.md&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+drwxr-xr-x 1 gmpark gmpark   512 Mar 16 15:04 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;01;34mexampleCode&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0m&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+drwxr-xr-x 1 gmpark gmpark   512 Mar 17 10:24 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;01;34mgwimong.github.io&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0m&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+-rwxr-xr-x 1 gmpark gmpark     0 Mar 17 11:29 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;01;32mscript.exp&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0m&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\]&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;0;gmpark@DESKTOP-IMN1RJ9: ~&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;01;32mgmpark@DESKTOP-IMN1RJ9&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;00m:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;01;34m~&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;00m&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &quot;&lt;/span&gt;
+send &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
+expect eof
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Tue, 17 Mar 2020 11:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2020/03/17/expect_autoexpect/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/17/expect_autoexpect/</guid>
+        
+        <category>Expect</category>
+        
+        <category>Utility</category>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Expect로 다수의 서버를 관리하자(4)</title>
+        <description>Perl Expect로 좀 더 범용적으로 사용 할 수 있도록 구현하였습니다.
+&lt;ul&gt;
+  &lt;li&gt;SSH 또는 Telnet로 원격 접속
+    &lt;ul&gt;
+      &lt;li&gt;수행할 명령을 파일로도 입력 받을 수 있도록 구현&lt;/li&gt;
+      &lt;li&gt;원격 접속 후 su change 수행&lt;/li&gt;
+      &lt;li&gt;수행 결과는 log 파일로 기록&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;requirement&quot;&gt;Requirement&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Perl (v5.26.1 &amp;gt;=)&lt;/li&gt;
+  &lt;li&gt;cpan 모듈 &lt;br /&gt;
+    - Switch&lt;br /&gt;
+    - Expect&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;source&quot;&gt;Source&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/perl&lt;/span&gt;
+
+use strict&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+use Switch&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+use Expect&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#$Expect::Multiline_Matching = 0;&lt;/span&gt;
+
+use constant &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;# connection type&lt;/span&gt;
+  CONN_UNKNOWN &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 0,
+  CONN_TELNET &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 1,
+  CONN_SSH &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 2,
+
+  &lt;span class=&quot;c&quot;&gt;# command control&lt;/span&gt;
+  EC_SUCCESS &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 0,
+  EC_ERROR &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 1,
+  EC_SVR_WRNG_ACCOUNT &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 2,
+  EC_CONN_FAILED &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 3,
+  EC_SCRIPT_LOAD_FAILED &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 4,
+  EC_SCRIPT_DUPLICATED &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 5,
+  EC_TIMEOUT &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 6,
+
+  &lt;span class=&quot;c&quot;&gt;# command type&lt;/span&gt;
+  RUN_COMMAND &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 1,
+  RUN_FILE &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 2,
+
+  &lt;span class=&quot;c&quot;&gt;# connect count&lt;/span&gt;
+  MAX_CONNECT_COUNT &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 3
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+my &lt;span class=&quot;nv&quot;&gt;$timeout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 30&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+my &lt;span class=&quot;nv&quot;&gt;$root_prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'[#] $'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+my &lt;span class=&quot;nv&quot;&gt;$host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;localhost&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+my &lt;span class=&quot;nv&quot;&gt;$port&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 22&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+my &lt;span class=&quot;nv&quot;&gt;$conn_mode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 2&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+my &lt;span class=&quot;nv&quot;&gt;$account&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+my &lt;span class=&quot;nv&quot;&gt;$passwd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+my &lt;span class=&quot;nv&quot;&gt;$root_passwd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+my &lt;span class=&quot;nv&quot;&gt;$su_change_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;su&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+my &lt;span class=&quot;nv&quot;&gt;$command_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; RUN_COMMAND&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+my &lt;span class=&quot;nv&quot;&gt;$connect_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; CONN_SSH&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+my &lt;span class=&quot;nv&quot;&gt;$conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+my &lt;span class=&quot;nv&quot;&gt;$command_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+my &lt;span class=&quot;nv&quot;&gt;$command_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+my &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$sec&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$min&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$hour&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$mday&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$mon&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$year&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$wday&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$yday&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$isdst&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; localtime&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+my &lt;span class=&quot;nv&quot;&gt;$log_postfix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; sprintf&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%04d%02d%02d_%02d%02d%02d&quot;&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$year&lt;/span&gt; + 1900, &lt;span class=&quot;nv&quot;&gt;$mon&lt;/span&gt; + 1, &lt;span class=&quot;nv&quot;&gt;$mday&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$hour&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$min&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$sec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.&lt;span class=&quot;s2&quot;&gt;&quot;.log&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&amp;amp;main&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+sub main &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  my &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; new Expect&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  my &lt;span class=&quot;nv&quot;&gt;$is_error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;raw_pty&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;log_stdout&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;exp_internal&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &amp;amp;init&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &amp;amp;connect_server&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &amp;amp;su_change&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;log_file&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$log_postfix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  switch &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$command_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; RUN_COMMAND &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$is_error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &amp;amp;command_run&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; RUN_FILE &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$is_error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &amp;amp;file_run&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &amp;amp;exit_proc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Unsupported command_type mode&quot;&lt;/span&gt;, EC_ERROR, 0, undef&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$is_error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &amp;amp;exit_proc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;An exit code is not euqal to 0 when executing the command&quot;&lt;/span&gt;, EC_ERROR, 1, &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &amp;amp;exit_proc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Completed all tasks successfully&quot;&lt;/span&gt;, EC_SUCCESS, 1, &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;    
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+sub init &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$#ARGV&lt;/span&gt; &amp;lt; 1 &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &amp;amp;exit_proc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Not enough arguments. Please check it again&quot;&lt;/span&gt;, EC_ERROR, 0, undef&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;my &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; &amp;lt; &lt;span class=&quot;nv&quot;&gt;$#ARGV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    switch&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ARGV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-T&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$conn_mode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; CONN_TELNET&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-S&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$conn_mode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; CONN_SSH&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-C&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; 
+            &lt;span class=&quot;nv&quot;&gt;$command_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; RUN_COMMAND&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;nv&quot;&gt;$command_str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ARGV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;++&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-F&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; 
+            &lt;span class=&quot;nv&quot;&gt;$command_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; RUN_FILE&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;nv&quot;&gt;$command_file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ARGV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;++&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-h&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ARGV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;++&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-rp&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$root_passwd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ARGV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;++&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-u&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$account&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ARGV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;++&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-p&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$passwd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ARGV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;++&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-P&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$port&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ARGV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;++&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  print &lt;span class=&quot;s2&quot;&gt;&quot;HOST : &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$host&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  print &lt;span class=&quot;s2&quot;&gt;&quot;PORT : &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$port&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  print &lt;span class=&quot;s2&quot;&gt;&quot;Connction mode(SSH(1), Telnet(2)) : &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$conn_mode&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  print &lt;span class=&quot;s2&quot;&gt;&quot;Connection account : &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$account&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  print &lt;span class=&quot;s2&quot;&gt;&quot;Connection account password : &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$passwd&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  print &lt;span class=&quot;s2&quot;&gt;&quot;Target's root password : &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$root_passwd&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  print &lt;span class=&quot;s2&quot;&gt;&quot;Command type(Commamd line(1), Input File(2))  : &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$command_type&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$command_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; RUN_COMMAND&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;    
+    print &lt;span class=&quot;s2&quot;&gt;&quot;Command : &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$command_str&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    print &lt;span class=&quot;s2&quot;&gt;&quot;Command file path : &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$command_file&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+sub exit_proc &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+  my &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$msg&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$code&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$do_release&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; @_&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$do_release&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; defined&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;exit&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt;-&amp;gt;soft_close&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;     
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Exit Message = &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$msg&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Exit Code = &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$code&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Bye.&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+sub timeout_err &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &amp;amp;exit_proc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Given execution time exceeded&quot;&lt;/span&gt;, EC_TIMEOUT, 0, undef&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+sub connect_server &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  my &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  my &lt;span class=&quot;nv&quot;&gt;$connect_count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  switch &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$conn_mode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; CONN_TELNET  &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$conn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;telnet &quot;&lt;/span&gt;.&lt;span class=&quot;nv&quot;&gt;$host&lt;/span&gt;.&lt;span class=&quot;s2&quot;&gt;&quot; &quot;&lt;/span&gt;.&lt;span class=&quot;nv&quot;&gt;$port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; CONN_SSH    &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$conn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ssh &quot;&lt;/span&gt;.&lt;span class=&quot;nv&quot;&gt;$account&lt;/span&gt;.&lt;span class=&quot;s2&quot;&gt;&quot;@&quot;&lt;/span&gt;.&lt;span class=&quot;nv&quot;&gt;$host&lt;/span&gt;.&lt;span class=&quot;s2&quot;&gt;&quot; -p &quot;&lt;/span&gt;.&lt;span class=&quot;nv&quot;&gt;$port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &amp;amp;exit_porc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Unsupported connection mode&quot;&lt;/span&gt;, EC_ERROR, 0, undef&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;spawn&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;expect&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$timeout&lt;/span&gt;,
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;qr &lt;span class=&quot;s2&quot;&gt;&quot;sername: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; my &lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$account&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; exp_continue&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;qr &lt;span class=&quot;s2&quot;&gt;&quot;ssword: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; 
+      my &lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+      &lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$passwd&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+      &lt;span class=&quot;nv&quot;&gt;$connect_count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$connect_count&lt;/span&gt; +1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$connect_count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; MAX_CONNECT_COUNT &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &amp;amp;exit_proc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Failed to login&quot;&lt;/span&gt;, EC_SVR_WRNG_ACCOUNT, 0, undef&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      exp_continue&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+    &lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;,
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;qr &lt;span class=&quot;s2&quot;&gt;&quot;yes/no&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; my &lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;yes&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; exp_continue&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;,
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;qr &lt;span class=&quot;s2&quot;&gt;&quot;[y]:&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; my &lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;???&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;y&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; exp_continue&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;,
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;qr &lt;span class=&quot;s2&quot;&gt;&quot;ermission denied|onnection refused&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; 
+      &amp;amp;exit_proc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Failed to login&quot;&lt;/span&gt;, EC_SVR_WRNG_ACCOUNT, 0, undef&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+    &lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;,
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;qr &lt;span class=&quot;s2&quot;&gt;&quot;ogin incorrect|onnection closed&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&amp;amp;exit_proc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Failed to login&quot;&lt;/span&gt;, EC_SVR_WRNG_ACCOUNT, 0, undef&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;,
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;qr &lt;span class=&quot;s2&quot;&gt;&quot;o route to host&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&amp;amp;exit_proc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;No route to host&quot;&lt;/span&gt;, EC_CONN_FAILED, 0, undef&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;,
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;timeout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&amp;amp;&lt;/span&gt;timeout_err],
+    &lt;span class=&quot;s2&quot;&gt;&quot;-re&quot;&lt;/span&gt;, qr&lt;span class=&quot;s2&quot;&gt;&quot;[#&amp;gt;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$\]&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;?(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\e\[\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;*;?&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;*m){0,1}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;?$&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+sub su_change &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  my &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$root_passwd&lt;/span&gt; ne &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    my &lt;span class=&quot;nv&quot;&gt;$changeenv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$su_change_str&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;expect&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$timeout&lt;/span&gt;,
+      &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;qr &lt;span class=&quot;s2&quot;&gt;&quot;ssword: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$|&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;ssword:$&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        my &lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$root_passwd&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+        exp_continue&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+      &lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;,     
+      &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;qr &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\S\S&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$|&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\S\S&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:$&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; 
+        my &lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;$sub&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$root_passwd&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+        exp_continue&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;,
+      &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;qr &lt;span class=&quot;s2&quot;&gt;&quot;incorrect password&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$changeenv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;,
+      &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;qr &lt;span class=&quot;s2&quot;&gt;&quot;su: Sorry&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$changeenv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;,
+      &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;timeout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&amp;amp;&lt;/span&gt;timeout_err],
+      &lt;span class=&quot;s2&quot;&gt;&quot;-re&quot;&lt;/span&gt;, qr &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$root_prompt&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# if changing succeed check a su_changed&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$changeenv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; 1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &amp;amp;exit_proc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Failed to su change.&quot;&lt;/span&gt;, EC_SVR_WRNG_ACCOUNT, 1, &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;EC_SUCCESS&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+sub command_run &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  my &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; @_&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  my @splitted_cmd &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;/&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;/, &lt;span class=&quot;nv&quot;&gt;$command_str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;log_file&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$log_postfix&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;w&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;my &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt; &amp;lt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; @splitted_cmd&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;++ &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    my &lt;span class=&quot;nv&quot;&gt;$struct_cmd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$splitted_cmd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$struct_cmd&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;log_file&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;expect&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2, &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;qr &lt;span class=&quot;s2&quot;&gt;&quot;--More--&quot;&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+          exp_continue&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;,
+        &lt;span class=&quot;s2&quot;&gt;&quot;-re&quot;&lt;/span&gt;, qr &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$root_prompt&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;EC_SUCCESS&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+sub file_run &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  my &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  open FILE, &lt;span class=&quot;nv&quot;&gt;$command_file&lt;/span&gt; or &amp;amp;exit_proc&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Unable to load given &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$command_file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;, EC_SCRIPT_LOAD_FAILED, 1, &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;# read script file and run command&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;my &lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &amp;lt;FILE&amp;gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    chomp&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;# remove line eof(&quot;\0&quot;)&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;~s/&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;/&lt;span class=&quot;se&quot;&gt;\c&lt;/span&gt;V&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;/g&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;log_file&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;expect&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2, &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;qr &lt;span class=&quot;s2&quot;&gt;&quot;--More--&quot;&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+          exp_continue&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;,
+        &lt;span class=&quot;s2&quot;&gt;&quot;-re&quot;&lt;/span&gt;, qr &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$root_prompt&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  close&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;FILE&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;EC_SUCCESS&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;a href=&quot;https://github.com/gwimong/exampleCode/tree/master/expect/commandRun&quot;&gt;[전체 소스]&lt;/a&gt;
+
+&lt;h2 id=&quot;사용법&quot;&gt;사용법&lt;/h2&gt;
+원격으로 로그인 후 입력된 명령을 수행합니다.
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#commandRun.pl -h [host] -u [userId] -p [userPassword] -rp [host's root password] -C [Command String]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;options&quot;&gt;Options&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;-F [filePath] : 파일 모드로 수행. filePath는 원격에서 실행할 명령어 파일&lt;/li&gt;
+  &lt;li&gt;-C [commandString] : 명령어 모드로 수행.&lt;/li&gt;
+  &lt;li&gt;-S : SSH로 접속&lt;/li&gt;
+  &lt;li&gt;-T : Telnet로 접속&lt;/li&gt;
+  &lt;li&gt;-P [Port] : 원격 접속할 포트 번호&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 16 Mar 2020 16:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2020/03/16/expect_commandTool/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/16/expect_commandTool/</guid>
+        
+        <category>Expect</category>
+        
+        <category>Perl</category>
+        
+        <category>Utility</category>
+        
+        <category>Script</category>
+        
+        <category>Programming</category>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Expect로 다수의 서버를 관리하자(3)</title>
+        <description>Perl Expect의 다양항 모듈 중 SSH 로그인을 위한 모듈을 소개드립니다.&lt;br /&gt;
+간단하게 SSH 로그인하여 원격으로 명령을 수행하는 스크립트를 구현 할 수 있습니다.
+
+&lt;h1 id=&quot;netsshexpect&quot;&gt;Net::SSH:Expect&lt;/h1&gt;
+: SSH wrapper to execute remote commands&lt;br /&gt;
+SSH를 이용한 원격 명령 실행 모듈입니다.&lt;a href=&quot;https://metacpan.org/pod/distribution/Net-SSH-Expect/lib/Net/SSH/Expect.pod&quot;&gt;[출처]&lt;/a&gt;
+
+&lt;h2 id=&quot;install&quot;&gt;Install&lt;/h2&gt;
+cpan을 이용하여 설치합니다.
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# sudo cpan Net::SSH::Expect&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;예제&quot;&gt;예제&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/perl&lt;/span&gt;
+use Net::SSH::Expect&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+my &lt;span class=&quot;nv&quot;&gt;$ssh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Net::SSH::Expect-&amp;gt;new &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+	 host &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;localhost&quot;&lt;/span&gt;,
+	 &lt;span class=&quot;nv&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'test123'&lt;/span&gt;,
+	 user &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'test'&lt;/span&gt;,
+	 raw_pty &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 1
+  &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+my &lt;span class=&quot;nv&quot;&gt;$login_output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ssh&lt;/span&gt;-&amp;gt;login&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+print &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$login_output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$login_output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;~ /Welcome/&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	die &lt;span class=&quot;s2&quot;&gt;&quot;Login has failed. Login output was &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$login_output&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+my &lt;span class=&quot;nv&quot;&gt;$who&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ssh&lt;/span&gt;-&amp;gt;exec&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;who&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+print &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$who&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+my &lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; defined &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ssh&lt;/span&gt;-&amp;gt;read_line&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  print &lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+print &lt;span class=&quot;nv&quot;&gt;$ssh&lt;/span&gt;-&amp;gt;peek&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;# you'll probably see the remote prompt&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ssh&lt;/span&gt;-&amp;gt;eat&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ssh&lt;/span&gt;-&amp;gt;peek&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# removes whatever is on the input stream now&lt;/span&gt;
+
+my &lt;span class=&quot;nv&quot;&gt;$chunk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$chunk&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ssh&lt;/span&gt;-&amp;gt;peek&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# grabs chunks of output each 1 second&lt;/span&gt;
+	print &lt;span class=&quot;nv&quot;&gt;$ssh&lt;/span&gt;-&amp;gt;eat&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$chunk&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;$ssh&lt;/span&gt;-&amp;gt;close&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Mon, 16 Mar 2020 14:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2020/03/16/expect_NetSSHExpect/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/16/expect_NetSSHExpect/</guid>
+        
+        <category>Expect</category>
+        
+        <category>Perl</category>
+        
+        <category>Utility</category>
+        
+        <category>NetSSHExpect</category>
+        
+        <category>Script</category>
+        
+        <category>Programming</category>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Expect로 다수의 서버를 관리하자(2)</title>
+        <description>Expect는 기본적으로 tcl로 작성됩니다. 하지만 tcl는 그리 친숙한 언어가 아니죠…
+expect는 다양한 언어에 모듈 형태로 지원되는데, 그중에 그나마 친숙한 perl로 expect를 사용하는 방법입니다.
+
+&lt;h1 id=&quot;perl-설치&quot;&gt;Perl 설치&lt;/h1&gt;
+리눅스에 기본적으로 perl이 설치되어 있겠지만, 혹여나 설치가 되어 있지 않다면 yum이나 apt로 설치합니다.
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#sudo apt install perl&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;perl-expect-설치&quot;&gt;Perl expect 설치&lt;/h1&gt;
+Perl는 모듈 관리를 위해 cpan을 이용합니다.
+
+&lt;ol&gt;
+  &lt;li&gt;cpan 설치
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#sudo install cpan&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;cpan으로 perl expect 모듈 설치
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#sudo cpan expect&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;예제-코드&quot;&gt;예제 코드&lt;/h1&gt;
+
+&lt;h4 id=&quot;expect로-구현---ssh-로그인&quot;&gt;Expect로 구현 - SSH 로그인&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/expect -f&lt;/span&gt;
+
+proc usage &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  puts &lt;span class=&quot;s2&quot;&gt;&quot;usage: ip_address password&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+proc login &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; host user password &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  puts &lt;span class=&quot;s2&quot;&gt;&quot;Connect server...&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  spawn ssh &lt;span class=&quot;nv&quot;&gt;$user&lt;/span&gt;@&lt;span class=&quot;nv&quot;&gt;$host&lt;/span&gt;
+  expect &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;-re&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;No route&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;-re&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;try again&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;-re&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;yes/no&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; send &lt;span class=&quot;s2&quot;&gt;&quot;yes&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; exp_continue &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;-re&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;password:&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; send &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$password&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\r&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  send &lt;span class=&quot;s2&quot;&gt;&quot;exit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;set timeout&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-1&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;HOST &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;lindex &lt;span class=&quot;nv&quot;&gt;$argv&lt;/span&gt; 0]
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;USERID &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;lindex &lt;span class=&quot;nv&quot;&gt;$argv&lt;/span&gt; 1]
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;PASSWD &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;lindex &lt;span class=&quot;nv&quot;&gt;$argv&lt;/span&gt; 2]
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;argc &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;llength &lt;span class=&quot;nv&quot;&gt;$argv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;llength &lt;span class=&quot;nv&quot;&gt;$argv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; 3 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  usage
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;running &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;login &lt;span class=&quot;nv&quot;&gt;$HOST&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$USERID&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PASSWD&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;a href=&quot;https://github.com/gwimong/exampleCode/blob/master/expect/sshConnect.exp&quot;&gt;[전체 소스]&lt;/a&gt;
+
+&lt;h4 id=&quot;perl-expect-로-구현---ssh-로그인&quot;&gt;Perl Expect 로 구현 - SSH 로그인&lt;/h4&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env perl&lt;/span&gt;
+
+use strict&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+use warnings&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+use Expect&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+my &lt;span class=&quot;nv&quot;&gt;$host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ARGV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0]&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+my &lt;span class=&quot;nv&quot;&gt;$userid&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ARGV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1]&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+my &lt;span class=&quot;nv&quot;&gt;$userpass&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ARGV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2]&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+my &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Expect-&amp;gt;new&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;spawn&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ssh&quot;&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;$userid&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;@&quot;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;expect&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+    10,
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; qr/&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;yes&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\/&lt;/span&gt;no&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;/   &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; my &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;yes&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; exp_continue&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; qr/password:/   &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; my &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$userpass&lt;/span&gt;.&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; exp_continue&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; qr/&lt;span class=&quot;nv&quot;&gt;$userid&lt;/span&gt;.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;/ &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; my &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ls &amp;gt; ls.txt&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; qr/Password:/   &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; sub &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; my &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$exp&lt;/span&gt;-&amp;gt;send&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$userpass&lt;/span&gt;.&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; exp_continue&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; qr/root.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#/     =&amp;gt; sub { my $exp = shift; $exp-&amp;gt;interact(); } ],&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+print &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; exit&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;a href=&quot;https://github.com/gwimong/exampleCode/blob/master/expect/sshConnect.pl&quot;&gt;[전체 소스]&lt;/a&gt;
+</description>
+        <pubDate>Thu, 12 Mar 2020 14:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2020/03/12/expect_perl/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/12/expect_perl/</guid>
+        
+        <category>Expect</category>
+        
+        <category>Perl</category>
+        
+        <category>Utility</category>
+        
+        <category>Script</category>
+        
+        <category>Programming</category>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Expect로 다수의 서버를 관리하자(1)</title>
+        <description>&lt;h1 id=&quot;expect란&quot;&gt;Expect란?&lt;/h1&gt;
+&lt;blockquote&gt;
+  Introduction  :
+Expect is a tool for automating interactive applications such as telnet, ftp, passwd, fsck, rlogin, tip, etc. Expect really makes this stuff trivial. Expect is also useful for testing these same applications. And by adding Tk, you can also wrap interactive applications in X11 GUIs.&lt;br /&gt;
+Expect can make easy all sorts of tasks that are prohibitively difficult with anything else. You will find that Expect is an absolutely invaluable tool - using it, you will be able to automate tasks that you’ve never even thought of before - and you’ll be able to do this automation quickly and easily.&lt;br /&gt;
+&lt;a href=&quot;https://core.tcl-lang.org/expect/index&quot;&gt;출처:https://core.tcl-lang.org/expect/index&lt;/a&gt;
+&lt;/blockquote&gt;
+
+Telnet, FTP, SSH 등과 같은 응용 프로그램을 자동으로 상호작용하며 제어하기 위한 프로그램입니다.
+
+국내에는 Expect를 많이 사용하지 않는지, 관련 자료들이 그리 많지 않네요…&lt;br /&gt;
+그 중 제타위키에 Expect가 어떤건지 이해하기 좋은 예제들이 잘 정리되어 있습니다.&lt;a href=&quot;https://zetawiki.com/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4_expect&quot;&gt;(제타위키:expect)&lt;/a&gt;
+
+&lt;h1 id=&quot;expect-설치&quot;&gt;Expect 설치&lt;/h1&gt;
+Expect는 Sourceforge.net에서 &lt;a href=&quot;https://sourceforge.net/projects/files&quot;&gt;다운로드&lt;/a&gt; 가능하며, 리눅스에서는 간단하게 yum이나 apt로 설치 가능합니다.
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#sudo apt install expect&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;expect-도구들&quot;&gt;Expect 도구들&lt;/h1&gt;
+Expect는 다양한 도구들을 제공합니다.
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#sudo apt install expect-dev&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/2020/03/17/expect_autoexpect/&quot;&gt;expect_autoexpect&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;expect_decryptdir&lt;/li&gt;
+  &lt;li&gt;expect_kibitz&lt;/li&gt;
+  &lt;li&gt;expect_multixterm&lt;/li&gt;
+  &lt;li&gt;expect_rlogin-cwd&lt;/li&gt;
+  &lt;li&gt;expect_tknewsbiff&lt;/li&gt;
+  &lt;li&gt;expect_weather&lt;/li&gt;
+  &lt;li&gt;expect_autopasswd&lt;/li&gt;
+  &lt;li&gt;expect_dislocate&lt;/li&gt;
+  &lt;li&gt;expect_lpunlock&lt;/li&gt;
+  &lt;li&gt;expect_passmass&lt;/li&gt;
+  &lt;li&gt;expect_timed-read&lt;/li&gt;
+  &lt;li&gt;expect_tkpasswd&lt;/li&gt;
+  &lt;li&gt;expect_xkibitz&lt;/li&gt;
+  &lt;li&gt;expect_cryptdir&lt;/li&gt;
+  &lt;li&gt;expect_ftp-rfc&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;2020/03/17/expect_mkpasswd/&quot;&gt;expect_mkpasswd&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;expect_rftp&lt;/li&gt;
+  &lt;li&gt;expect_timed-run&lt;/li&gt;
+  &lt;li&gt;expect_unbuffer&lt;/li&gt;
+  &lt;li&gt;expect_xpstat&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Thu, 12 Mar 2020 11:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2020/03/12/expect/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/12/expect/</guid>
+        
+        <category>Expect</category>
+        
+        <category>Utility</category>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>데이터 유무 확인을 위한 SQL 구현</title>
+        <description>IN 연산자는 보통 특정 Table(or View) Data에서 데이터를 추출하기 위해 사용합니다.  이를 응용하여 해당 테이블에 IN에서 지정된 데이터가 있는지 확인하는 용도로도 사용됩니다.
+&lt;blockquote&gt;
+  select count(*) from data in (~~~)
+&lt;/blockquote&gt;
+
+하지만 IN에 지정되는 값을 모두 확인하기 때문에 IN에 지정된 데이터가 많아질 수록 느려질 수 밖에 없습니다.
+
+&lt;h1 id=&quot;exists-함수&quot;&gt;Exists 함수&lt;/h1&gt;
+서브 쿼리를 만족하면 그 즉시 해당 데이터를 반환합니다.
+
+&lt;h2 id=&quot;사용법&quot;&gt;사용법&lt;/h2&gt;
+EXISTS는 IN과 다르게 서브 쿼리를 이용하며, 서브 쿼리에는 검사하고자 하는 조건이 포함되어야 합니다.
+&lt;blockquote&gt;
+  select * from ([데이터 A] where exists ([데이터 B]) B where [조건]);
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;예시&quot;&gt;예시&lt;/h2&gt;
+다음처럼 List 형태의 데이터를 가지고 있는 테이블이 있습니다.
+&lt;ul&gt;
+  &lt;li&gt;approval_id : tb_approval의 id(PK)&lt;/li&gt;
+  &lt;li&gt;next_approval_approval_id : approval_id를 가리킴.&lt;/li&gt;
+&lt;/ul&gt;
+
+next_approval_approval_id에 데이터가 있는데, 해당 데이터가 가리키는 데이터 없는 경우 문제가 발생합니다.&lt;br /&gt;
+해서, next_approaval_approval_id이 가리키는 approval_id가 없는 경우 찾고자 합니다.
+
+&lt;blockquote&gt;
+  select A.next_approval_approval_id from &lt;br /&gt;
+	  (select * from tb_approval where next_approval_approval_id is not null) A where not exists &lt;br /&gt;
+			(select * from (select * from tb_approval) B where A.next_approval_approval_id = B.approval_id);
+&lt;/blockquote&gt;
+
+(없는 경우를 찾고자 했으므로, not exists를 사용하였습니다.)
+
+</description>
+        <pubDate>Tue, 10 Mar 2020 18:13:00 +0900</pubDate>
+        <link>http://localhost:4000/2020/03/10/not-exists/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/10/not-exists/</guid>
+        
+        <category>SQL</category>
+        
+        <category>MySQL</category>
+        
+        
+        <category>Database</category>
+        
+      </item>
+    
+      <item>
+        <title>sudo 권한 부여하기</title>
+        <description>===
+
+&lt;h1 id=&quot;what&quot;&gt;What?&lt;/h1&gt;
+: Edit the sudoers file&lt;br /&gt;
+sudoers 파일을 수정하기 위한 유틸리티입니다.
+
+&lt;h1 id=&quot;why&quot;&gt;Why?&lt;/h1&gt;
+sudo 권한은 일반 유저에게 root 권한을 부여하는 것입니다.
+sudo 권한을 부여하기 위해서는 sudoers 파일을 수정해야 하는데, 그만큼 중요한 파일이기에 파일 권한이 잠겨 있습니다.
+
+&lt;img src=&quot;/resource/visudo/sudoers.png&quot; alt=&quot;sudoers&quot; /&gt;
+
+다른 계정은 읽지도 못하며, 소유자인 root도 읽기만 가능합니다.&lt;br /&gt;
+그렇기에 sudo 권한을 부여하기 위해선
+&lt;ul&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Mon, 09 Mar 2020 18:19:00 +0900</pubDate>
+        <link>http://localhost:4000/2020/03/09/visudo/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/09/visudo/</guid>
+        
+        <category>Linux</category>
+        
+        <category>Utility</category>
+        
+        <category>visudo</category>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Tomcat 배포시 documents4j ConverterAccessException</title>
+        <description>======================
+
+STS + Spring Boot 환경에서 Documsnts4j를 이용하여 Docx를 PDF로 변환하는 코드를 구현하였습니다.&lt;br /&gt;
+STS의 개발 환경에서 구현하다 보니 Embedded Tomcat에서는 잘 동작하는데, 막상 서비스를 위해 Tomcat에 배포를 하니 Documtns4j의 Convert가 제대로 수행되지 않았습니다.
+
+Convert 수행시 Exception는 다음과 같습니다.
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;com.documents4j.throwables.ConverterAccessException: The converter seems to be shut down
+	 at com.documents4j.util.Reaction$ConverterAccessExceptionBuilder.make(Reaction.java:117) ~[documents4j-util-all-1.0.2.jar:na]
+	 at com.documents4j.util.Reaction$ExceptionalReaction.apply(Reaction.java:75) ~[documents4j-util-all-1.0.2.jar:na]
+	 at com.documents4j.conversion.ExternalConverterScriptResult.resolve(ExternalConverterScriptResult.java:70) ~[documents4j-transformer-api-1.0.2.jar:na]
+	 at com.documents4j.conversion.ProcessFutureWrapper.evaluateExitValue(ProcessFutureWrapper.java:48) ~[documents4j-util-transformer-process-1.0.2.jar:na]
+	 at com.documents4j.conversion.ProcessFutureWrapper.get(ProcessFutureWrapper.java:36) ~[documents4j-util-transformer-process-1.0.2.jar:na]
+	 at com.documents4j.conversion.ProcessFutureWrapper.get(ProcessFutureWrapper.java:11) ~[documents4j-util-transformer-process-1.0.2.jar:na]
+	 at com.documents4j.job.AbstractFutureWrappingPriorityFuture.run(AbstractFutureWrappingPriorityFuture.java:78) ~[documents4j-util-conversion-1.0.2.jar:na]
+	 at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) ~[na:1.8.0_74]
+	 at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) ~[na:1.8.0_74]
+	 at java.lang.Thread.run(Thread.java:745) ~[na:1.8.0_74]
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+Documnts4j는 VBScript를 이용하여 변환을 수행합니다.
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;4:36:16.109 INFO  c.d.c.msoffice.MicrosoftWordBridge - From-Microsoft-Word-Converter was started successfully
+14:36:16.112 INFO  com.documents4j.job.LocalConverter - The documents4j local converter has started successfully
+14:36:16.124 INFO  c.d.c.msoffice.MicrosoftWordBridge - Requested conversion from C:\Users\gmpark\AppData\Local\Temp\1575264973533-0\68ed3e6b-ab29-47ff-8ee5-fafebe14c5a6\temp1 (application/vnd.com.documents4j.any-msword) to C:\Users\gmpark\AppData\Local\Temp\1575264973533-0\68ed3e6b-ab29-47ff-8ee5-fafebe14c5a6\temp2 (application/vnd.com.documents4j.pdf-a)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+MicrosoftWordBridge가 정상적으로 수행되었고, VBScript도 정상적으로 생성하였습니다.
+
+먼저, 해당 VBScript가 정상적으로 수행되는지 확인해봅니다.&lt;br /&gt;
+(대상 파일 : C:\test.docx, 결과 파일 : C:\test.pdf, 변환 포맷 : 999(PDFA)
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\g&lt;/span&gt;mpark&lt;span class=&quot;se&quot;&gt;\A&lt;/span&gt;ppData&lt;span class=&quot;se&quot;&gt;\L&lt;/span&gt;ocal&lt;span class=&quot;se&quot;&gt;\T&lt;/span&gt;emp&lt;span class=&quot;se&quot;&gt;\1&lt;/span&gt;575264973533-0
+script word_convert754050868.vbs C:&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;est.docx C:&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;est.pdf 999
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+정상적으로 변환이 되네요…
+Documents4j가 생성해준 VBScription는 이상이 없으니, Java에서 실행시켜주는게 문제일 것 같네요.&lt;br /&gt;
+STS 환경에선 정상적으로 수행이 됬으니, Tomcat 설정을 확인해봅니다.
+
+Tomcat은 기본적으로 Local Service account로 실행되도록 설정이 되어 있네요.&lt;br /&gt;
+해당 설정을 Local System account로 변경하고 재시작하였습니다.
+
+정상적으로 수행이 되네요!!
+
+Tomcat이 Local Service accout 권한인 경우 Word를 실행시키지 못해 발생하는 문제인 것 같네요.&lt;br /&gt;
+앞으로 Tomcat으로 배포시 유의해야 할 것 같습니다
+</description>
+        <pubDate>Mon, 02 Dec 2019 12:43:00 +0900</pubDate>
+        <link>http://localhost:4000/2019/12/02/documents4j_throwables_ConverterAccessException/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/12/02/documents4j_throwables_ConverterAccessException/</guid>
+        
+        <category>Tomcat</category>
+        
+        <category>Documents4j</category>
+        
+        <category>Java</category>
+        
+        
+        <category>TroubleShooting</category>
+        
+      </item>
+    
+      <item>
+        <title>IT 자격증 종류</title>
+        <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|-- 국가기술자격
+|    |-- 한국산업인력공단
+|    |    |-- 멀티미디어콘텐츠제작전문가
+|    |    |-- 사무자동화산업기사
+|    |    |-- 전자계산기조직응용기사
+|    |    |-- 정보관리기술사
+|    |    |-- 정보기기운용기능사
+|    |    |-- 정보처리기능사
+|    |    |-- 정보처리기사
+|    |    |-- 정보처리산업기사
+|    |    |-- 컴퓨터시스템응용기술사
+|    |-- 대한상공회의소
+|    |    |-- 워드프로세서
+|    |    |-- 전산회계운용사
+|    |    |-- 전자상거래관리사
+|    |    |-- 전자상거래운용사
+|    |    |-- 컴퓨터활용능력
+|    |    |-- 한국인터넷진흥원
+|    |    |-- 정보보안기사
+|    |    |-- 정보보안산업기사
+|    |-- 한국콘텐츠진흥원
+|    |    |-- 게임그래픽전문가
+|    |    |-- 게임기획전문가
+|    |    |-- 게임프로그래밍전문가
+|-- 국가공인자격
+|    |-- 한국정보통신진흥협회
+|    |    |-- 공무원정보이용능력평가(NIT)
+|    |    |-- 디지털정보활용능력(DIAT)
+|    |    |-- 리눅스마스터
+|    |    |-- 인터넷정보관리사
+|    |-- 한국정보평가협회
+|    |    |-- CS Leaders(관리사)
+|    |    |-- PC Master(정비사)
+|    |-- 피씨티
+|    |    |-- PC활용능력평가시험(PCT)
+|    |-- 대한상공회의소
+|    |    |-- 컴퓨터운용사
+|    |-- 대한정보통신기술
+|    |    |-- 정보기술프로젝트관리전문가(IT-PMP)
+|    |-- 한국데이터베이스진흥원
+|    |    |-- SQL
+|    |    |-- 데이터분석전문가
+|    |    |-- 데이터분석준전문가
+|    |    |-- 데이터아키텍처전문가(DAP)
+|    |-- 한국사물인터넷협회
+|    |    |-- RFID기술자격검정(RFID-GL/RFID-SL)
+|    |-- 한국정보통신자격협회
+|    |    |-- PC정비사
+|    |    |-- 네트워크관리사
+|    |-- 한국정보화진흥원
+|    |    |-- 정보시스템감리사
+|-- 국제전문자격
+|    |-- Cisco
+|    |    |-- Cisco Certified Network Associate(CCNA)
+|    |    |-- Cisco Certified network Professional(CCNP): Routing and Switching
+|    |    |-- Cisco Certified network Professional(CCNP): Collabroration
+|    |    |-- Cisco Certified network Professional(CCNP): Data Center
+|    |    |-- Cisco Certified network Professional(CCNP): Cluod
+|    |    |-- Cisco Certified network Professional(CCNP): Security
+|    |    |-- Cisco Certified network Professional(CCNP): Wireless
+|    |    |-- Cisco Certified network Professional(CCNP): Service Provider
+|    |    |-- Cisco Certified Internetwork Expert(CCIE): Enterprise Infrastructure
+|    |    |-- Cisco Certified Internetwork Expert(CCIE): CCIE Enterprise Wireless
+|    |    |-- Cisco Certified Internetwork Expert(CCIE): Data Center
+|    |    |-- Cisco Certified Internetwork Expert(CCIE): Security
+|    |    |-- Cisco Certified Internetwork Expert(CCIE): service Provider
+|    |    |-- Cisco Certified Architect
+|    |-- IBM
+|    |    |-- IBM Certified Systems Expert
+|    |    |-- IBM Certified Advanced Technical Expert
+|    |    |-- IBM Certified System Administrator
+|    |-- Microsoft
+|    |    |-- Microsoft Certified Professional(MCP)
+|    |    |-- Microsoft Certified Solutions Associate(MCSA): BI Reporting
+|    |    |-- Microsoft Certified Solutions Associate(MCSA): Microsoft Dynamics 365 for Operations
+|    |    |-- Microsoft Certified Solutions Associate(MCSA): Office 365
+|    |    |-- Microsoft Certified Solutions Associate(MCSA): SQL 2016 BI Development
+|    |    |-- Microsoft Certified Solutions Associate(MCSA): SQL 2016 Database Administration
+|    |    |-- Microsoft Certified Solutions Associate(MCSA): SQL 2016 Database Development
+|    |    |-- Microsoft Certified Solutions Expert(MCSE): Business Applications
+|    |    |-- Microsoft Certified Solutions Expert(MCSE): Core Infrastructure
+|    |    |-- Microsoft Certified Solutions Expert(MCSE): Data Management and Analytics
+|    |    |-- Microsoft Certified Solutions Expert(MCSE): Mobility
+|    |    |-- Microsoft Certified Solutions Expert(MCSE): Productivity
+|    |    |-- Microsoft Office Specialist(MOS)
+|    |    |-- Microsoft Technology Associate(MTA)
+|    |    |-- Microsoft Professional Program(MPP)
+|    |-- Google
+|    |    |-- Google Analytics Individual Qualification(GAIQ)
+|    |-- Oracle
+|    |    |-- Oracle Certified Junior Associate(OJA)
+|    |    |-- Oracle Certified Associate(OCA)
+|    |    |    |-- Oracle Database Administrator Certified Associate
+|    |    |    |-- Oracle PL/SQL Developer Certified Associate
+|    |    |    |-- Oracle Database SQL Certified Associate
+|    |    |    |-- Oracle Certified Associate, Java Programmer
+|    |    |-- Oracle Certified Professional(OCP)
+|    |    |    |-- Oracle Database Administration Certified Professional
+|    |    |    |-- Oracel Database PL/SQL Developer Certified Professional
+|    |    |    |-- Oracle Certified Professional, MySQL Database Administrator
+|    |    |    |-- Oracle Certified Professional, MySQL Developer
+|    |    |    |-- Oracle Certified Professional: Java SE Developer
+|    |    |    |-- Oracle Certified Professional, Java EE Application Developer
+|    |    |-- Oracle Certified Master(OCM)
+|    |    |    |-- Oracle Database Administration Certified Master
+|    |    |    |-- Oracle Certified Master, Java EE Enterprise Architect
+|    |    |-- Oracle Certified Specialist(OCS)
+|    |    |    |-- Oracle Identity Governance Suite 11g PS3 Certified Implementation Specialist
+|    |    |    |-- Oracle Database 12c Certified Implementation Specialist
+|    |    |    |-- Oracle Real Application Clusters 12c Certified Implementation Specialist
+|    |    |-- Oracle Certified Expert(OCE)
+|    |    |    |-- Oracle Certified Expert, Oracle Database 12c: Performance Management and Tuning
+|    |    |    |-- Oracle Certified Expert, Oracle Database 12c: RAC and Grid Infrastructure Administrator
+|    |    |    |-- Oracle Database 12c Maximum Availability Certified Expert
+|    |    |    |-- Oracle Database 12c Maximum Availability Certified Master
+|    |-- Adobe
+|    |    |-- Adobe Certified Associate(ACA)
+|    |-- Autodesk
+|    |    |-- Autodesk Certified User(ACU)
+|    |    |-- Autodesk Certified Professional(ACP)
+|    |-- CompTIA
+|    |    |-- CompTIA netowrk+
+|    |    |-- CompTIA Linux
+|    |    |-- CompTIA Server+
+|    |    |-- CompTIA Storage+
+|    |    |-- CompTIA Mobile App Security+
+|    |    |-- CompTIA Security+
+|    |    |-- CompTIA Advanced Security Practitioner
+|    |    |-- CompTIA Strata IT Fundamentals
+|    |    |-- CompTIA A+
+|    |    |-- CompTIA CDIA+
+|    |    |-- CompTIA Cloud+
+|    |    |-- CompTIA CTT+
+|    |    |-- CompTIA Mobility+
+|    |    |-- CompTIA Project+
+|    |    |-- CompTIA Cloud Essentials
+|    |    |-- CompTIA Healthcare IT Technician
+|    |-- LPI
+|    |    |-- Linux Essentials
+|    |    |-- LPIC1 Linux administratior
+|    |    |-- LPIC2 Linux Engineer
+|    |    |-- LPIC3 Enterprise professional(Mixed Environment/Security/Virtualization&amp;amp;HA)
+|    |-- Redhat
+|    |    |-- Red Hat Certified System Administrator(RHCSA)
+|    |    |-- Red Hat Certified Engineer(RHCE)
+|    |    |-- Red Hat Certified Architect(RHCA)
+|    |    |    |-- Red Hat Certified Architeca(RHCA) in Infrastructure
+|    |    |    |    |-- Red Hat Certified System Administrator in Red Hat OpenStack
+|    |    |    |    |-- Red Hat Certified Specialist In Hybrid Cloud Management
+|    |    |    |    |-- Red hat Certified Specialist in Containerized Application Development
+|    |    |    |    |-- Red Hat Certified Specialist in OpenShift Administration
+|    |    |    |    |-- Red Hat Certified Engineer in Red Hat OpenStack
+|    |    |    |    |-- Red Hat Certified Virtualization Administrator
+|    |    |    |    |-- Red Hat Certified Specialist in Linux Diagnostics and Troubleshooting
+|    |    |    |    |-- Red Hat Certified Specialist in Deployment and Systems Management
+|    |    |    |    |-- Red Hat Certified Specialist in Configuration Management
+|    |    |    |    |-- Red Hat Certified Specialist in Ansible Automation
+|    |    |    |    |-- Red Hat Certified Specialist in Server Security and Hardening
+|    |    |    |    |-- Red Hat Certified Specialist in High Availability Clustering
+|    |    |    |    |-- Red Hat Certified Specialist in Linux Performance Tuning
+|    |    |    |    |-- Red Hat Certified Specialist in Security: Linux
+|    |    |    |    |-- Red Hat Certified Specialist in OpenShift Application Development
+|    |    |    |-- Red Hat Certified Architect(RHCA) in Enterprise Applications
+|    |    |    |    |-- Red Hat Certified Specialist in Enterprise Application Server Administration
+|    |    |    |    |-- Red Hat Certified Specialist in Containerized Application Development
+|    |    |    |    |-- Red Hat Certified Specialist in OpenShift Administration
+|    |    |    |    |-- Red Hat Certified Specialist in Configuration Management
+|    |    |    |    |-- Red Hat Certified Specialist in Ansible Automation
+|    |    |    |    |-- Red Hat Certified Specialist in Camel Development
+|    |    |    |    |-- Red Hat Certified Specialist in Fast-Cache Application Development
+|    |    |    |    |-- Red Hat Certified Specialist in Business Rules
+|    |    |    |    |-- Red Hat Certified Specialist in Business Process Design
+|    |    |    |    |-- Red Hat Certified Specialist in OpenShift Application Development
+|    |    |-- Red Hat Certified Engineer in Red Hat OpenStack
+|    |    |-- Red Hat Certified Enterprise Application Developer
+|    |    |-- Red Hat Certified Enterprise Microservices Developer
+|    |    |-- Red Hat Certified System Administrator in Red Hat OpenStack
+|    |-- C++ Insitute
+|    |    |-- C Programming Language Certification Assiociate
+|    |    |-- C++ Certified Assiociate Programmer
+|    |    |-- C++ Certified Professional Programmer
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Thu, 14 Nov 2019 01:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2019/11/14/type-of-certification/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/11/14/type-of-certification/</guid>
+        
+        <category>Certification</category>
+        
+        
+        <category>Etc</category>
+        
+      </item>
+    
+  </channel>
+</rss>

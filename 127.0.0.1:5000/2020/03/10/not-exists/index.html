@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>데이터 유무 확인을 위한 SQL 구현</title>
+    <meta name="description" content="IN 연산자는 보통 특정 Table(or View) Data에서 데이터를 추출하기 위해 사용합니다.  이를 응용하여 해당 테이블에 IN에서 지정된 데이터가 있는지 확인하는 용도로도 사용됩니다.  select count(*) from data in (~~~)하지만 IN에 지정되는 값...">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
+    <link rel="stylesheet" href="/css/main.css ">
+    <link rel="canonical" href="http://localhost:4000/2020/03/10/not-exists/">
+    <link rel="alternate" type="application/rss+xml" title="gwimong's blog" href="http://localhost:4000/feed.xml ">
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117259791-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-117259791-1');
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: { inlineMath: [["$","$"],["\\(","\\)"]] },
+    "HTML-CSS": {
+      linebreaks: { automatic: true, width: "container" }
+    }
+});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">gwimong's blog</a>
+        <small>Dev Engineer</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archive/">
+                        
+                            <i class="fa fa-archive"></i>Archives
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>Categories
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>Tags
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/collection/">
+                        
+                            <i class="fa fa-bookmark"></i>Collections
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/demo/">
+                        
+                            <i class="fa fa-play"></i>Demo
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>About
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117259791-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'google_analytics_id');
+</script>
+
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>데이터 유무 확인을 위한 SQL 구현</h1>
+				IN보다 Exists를 사용하자
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2020-03-10
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Database" title="Category: Database" rel="category">Database</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+
+            <div class="label-card">
+            
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#SQL" title="Tag: SQL" rel="tag">SQL</a-->
+        <a href="/tag/#SQL" title="Tag: SQL" rel="tag">SQL</a>&nbsp;
+    
+        <!--a href="/tag/#MySQL" title="Tag: MySQL" rel="tag">MySQL</a-->
+        <a href="/tag/#MySQL" title="Tag: MySQL" rel="tag">MySQL</a>
+    
+  
+
+</span>
+
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        <p>IN 연산자는 보통 특정 Table(or View) Data에서 데이터를 추출하기 위해 사용합니다.  이를 응용하여 해당 테이블에 IN에서 지정된 데이터가 있는지 확인하는 용도로도 사용됩니다.</p>
+<blockquote>
+  <p>select count(*) from data in (~~~)</p>
+</blockquote>
+
+<p>하지만 IN에 지정되는 값을 모두 확인하기 때문에 IN에 지정된 데이터가 많아질 수록 느려질 수 밖에 없습니다.</p>
+
+<h1 id="exists-함수">Exists 함수</h1>
+<p>서브 쿼리를 만족하면 그 즉시 해당 데이터를 반환합니다.</p>
+
+<h2 id="사용법">사용법</h2>
+<p>EXISTS는 IN과 다르게 서브 쿼리를 이용하며, 서브 쿼리에는 검사하고자 하는 조건이 포함되어야 합니다.</p>
+<blockquote>
+  <p>select * from ([데이터 A] where exists ([데이터 B]) B where [조건]);</p>
+</blockquote>
+
+<h2 id="예시">예시</h2>
+<p>다음처럼 List 형태의 데이터를 가지고 있는 테이블이 있습니다.</p>
+<ul>
+  <li>approval_id : tb_approval의 id(PK)</li>
+  <li>next_approval_approval_id : approval_id를 가리킴.</li>
+</ul>
+
+<p>next_approval_approval_id에 데이터가 있는데, 해당 데이터가 가리키는 데이터 없는 경우 문제가 발생합니다.<br />
+해서, next_approaval_approval_id이 가리키는 approval_id가 없는 경우 찾고자 합니다.</p>
+
+<blockquote>
+  <p>select A.next_approval_approval_id from <br />
+	  (select * from tb_approval where next_approval_approval_id is not null) A where not exists <br />
+			(select * from (select * from tb_approval) B where A.next_approval_approval_id = B.approval_id);</p>
+</blockquote>
+
+<p>(없는 경우를 찾고자 했으므로, not exists를 사용하였습니다.)</p>
+
+
+        </article>
+        <hr>
+
+        
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+        
+
+        <div class="post-recent">
+    <div class="pre">
+        
+        <p><strong>Previous:</strong> <a href="/2020/03/09/visudo/">sudo 권한 부여하기</a></p>
+        
+    </div>
+    <div class="nex">
+
+        
+        <p><strong>Next:</strong> <a href="/2020/03/12/expect/">Expect로 다수의 서버를 관리하자(1)</a></p>
+        
+    </div>
+</div>
+
+
+        <h2 id="comments">Comments</h2>
+        
+
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+
+    var disqus_config = function() {
+        this.page.url = 'http://localhost:4000/2020/03/10/not-exists/'; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://localhost:4000/2020/03/10/not-exists/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document,
+            s = d.createElement('script');
+
+        s.src = '//gwimong-github-io.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    Content
+                </div>
+                <ul id="content-side" class="content-ul">
+                    
+                    <li><a href="#comments">Comments</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="/js/pageContent.js " charset="utf-8"></script>
+
+
+<!-- 코드 접기/펼치기 -->
+<script language="JavaScript" type="text/javascript">
+function paragraph_toggle(obj) {
+	  if (obj.style.display == 'none')
+		      obj.style.display = 'block';
+	    else if (obj.style.display == 'block')
+			    obj.style.display = 'none';
+};
+</script>
+
+
+    <footer class="site-footer">
+    <div class="wrapper">
+        <p class="description">
+             mong's blog 
+        </p>
+        <p class="contact">
+            Contact me at: 
+			
+	            <a href="https://github.com/gwimong" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a> 
+			
+			
+				<a href="mailto:scarcedream@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+			
+			 
+			
+	            <a href="https://www.facebook.com/gwimong" title="Facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+			
+			 
+        </p>
+        <p class="power">
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+            <span>
+                Theme designed by <a href="https://github.com/Gaohaoyang">HyG</a>.
+            </span>
+        </p>
+    </div>
+</footer>
+
+    <div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/smooth-scroll.min.js " charset="utf-8"></script>
+    <script type="text/javascript">
+      smoothScroll.init({
+        speed: 500, // Integer. How fast to complete the scroll in milliseconds
+        easing: 'easeInOutCubic', // Easing pattern to use
+        offset: 20, // Integer. How far to offset the scrolling anchor location in pixels
+      });
+    </script>
+    <!-- <script src=" /js/scroll.min.js " charset="utf-8"></script> -->
+  </body>
+
+</html>

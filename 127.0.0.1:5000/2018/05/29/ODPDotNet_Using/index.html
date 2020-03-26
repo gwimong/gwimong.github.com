@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ODP.NET을 사용하여 Oracle에 연동(C#)</title>
+    <meta name="description" content="Using ODP.NETGetting Started with ODP.NET      C# 프로젝트 생성        참조에 OracleManagedDataAccess 추가      using 코드 추가    using Oracle.ManagedDataAccess.Client;   ...">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_8v3czwksspqlg14i.css">
+    <link rel="stylesheet" href="/css/main.css ">
+    <link rel="canonical" href="http://localhost:4000/2018/05/29/ODPDotNet_Using/">
+    <link rel="alternate" type="application/rss+xml" title="gwimong's blog" href="http://localhost:4000/feed.xml ">
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117259791-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-117259791-1');
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: { inlineMath: [["$","$"],["\\(","\\)"]] },
+    "HTML-CSS": {
+      linebreaks: { automatic: true, width: "container" }
+    }
+});
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">gwimong's blog</a>
+        <small>Dev Engineer</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>Home
+                    </a>
+                </li>
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archive/">
+                        
+                            <i class="fa fa-archive"></i>Archives
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>Categories
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>Tags
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/collection/">
+                        
+                            <i class="fa fa-bookmark"></i>Collections
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/demo/">
+                        
+                            <i class="fa fa-play"></i>Demo
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>About
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117259791-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'google_analytics_id');
+</script>
+
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>ODP.NET을 사용하여 Oracle에 연동(C#)</h1>
+				
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2018-05-29
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#Programming" title="Category: Programming" rel="category">Programming</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+
+            <div class="label-card">
+            
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#OracleDB" title="Tag: OracleDB" rel="tag">OracleDB</a-->
+        <a href="/tag/#OracleDB" title="Tag: OracleDB" rel="tag">OracleDB</a>&nbsp;
+    
+        <!--a href="/tag/#.NET" title="Tag: .NET" rel="tag">.NET</a-->
+        <a href="/tag/#.NET" title="Tag: .NET" rel="tag">.NET</a>&nbsp;
+    
+        <!--a href="/tag/#C%23" title="Tag: C#" rel="tag">C#</a-->
+        <a href="/tag/#C#" title="Tag: C#" rel="tag">C#</a>&nbsp;
+    
+        <!--a href="/tag/#VisualStudio" title="Tag: VisualStudio" rel="tag">VisualStudio</a-->
+        <a href="/tag/#VisualStudio" title="Tag: VisualStudio" rel="tag">VisualStudio</a>
+    
+  
+
+</span>
+
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        <h1 id="using-odpnet">Using ODP.NET</h1>
+
+<h2 id="getting-started-with-odpnet">Getting Started with ODP.NET</h2>
+
+<ol>
+  <li>
+    <p>C# 프로젝트 생성</p>
+  </li>
+  <li>
+    <p>참조에 OracleManagedDataAccess 추가 <br />
+ <img src="/resource/ODPDotNet/ODPDotNet_AddReference.png" alt="AddReference" title="AddReference" width="700" height="400" /></p>
+  </li>
+  <li>using 코드 추가
+    <div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Oracle.ManagedDataAccess.Client</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>예제(CRUD) 코드
+    <div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">string</span> <span class="n">serverAddress</span> <span class="p">=</span> <span class="s">"localhost"</span><span class="p">;</span>
+<span class="kt">string</span> <span class="n">serviceName</span> <span class="p">=</span> <span class="s">"ORCL"</span><span class="p">;</span>
+<span class="kt">string</span> <span class="n">userId</span> <span class="p">=</span> <span class="s">"scott"</span><span class="p">;</span>
+<span class="kt">string</span> <span class="n">userPw</span> <span class="p">=</span> <span class="s">"000000"</span><span class="p">;</span>
+<span class="kt">string</span> <span class="n">connectStr</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST={0})(PORT=1521))(CONNECT_DATA=(SERVICE_NAME={1})));User Id={2};Password={3};"</span><span class="p">,</span> <span class="n">serverAddress</span><span class="p">,</span> <span class="n">serviceName</span><span class="p">,</span> <span class="n">userId</span><span class="p">,</span> <span class="n">userPw</span><span class="p">);</span>
+<span class="k">using</span> <span class="p">(</span><span class="n">OracleConnection</span> <span class="n">cnn</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">OracleConnection</span><span class="p">(</span><span class="n">connectStr</span><span class="p">))</span>
+<span class="p">{</span>
+ <span class="n">cnn</span><span class="p">.</span><span class="nf">Open</span><span class="p">();</span>
+
+ <span class="cm">/*************************** Create *************************************/</span>
+ <span class="n">OracleCommand</span> <span class="n">insertCmd</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">OracleCommand</span><span class="p">();</span>
+ <span class="n">insertCmd</span><span class="p">.</span><span class="n">Connection</span> <span class="p">=</span> <span class="n">cnn</span><span class="p">;</span>
+ <span class="n">insertCmd</span><span class="p">.</span><span class="n">CommandText</span> <span class="p">=</span> <span class="s">"INSERT INTO USERS(ID, USERNAME) VALUES (:id, :NAME)"</span><span class="p">;</span>
+
+ <span class="n">insertCmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"ID"</span><span class="p">,</span> <span class="n">OracleDbType</span><span class="p">.</span><span class="n">Int32</span><span class="p">);</span>
+ <span class="n">insertCmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"USERNAME"</span><span class="p">,</span> <span class="n">OracleDbType</span><span class="p">.</span><span class="n">Varchar2</span><span class="p">,</span> <span class="m">50</span><span class="p">);</span>
+
+ <span class="n">insertCmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">Value</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+ <span class="n">insertCmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="m">1</span><span class="p">].</span><span class="n">Value</span> <span class="p">=</span> <span class="s">"test"</span><span class="p">;</span>
+
+ <span class="kt">int</span> <span class="n">affected</span> <span class="p">=</span> <span class="n">insertCmd</span><span class="p">.</span><span class="nf">ExecuteNonQuery</span><span class="p">();</span>
+ <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"# Result : "</span> <span class="p">+</span> <span class="n">affected</span><span class="p">);</span>
+
+
+ <span class="cm">/*************************** Read *************************************/</span>
+ <span class="c1">// Select - ExecuteScalar</span>
+ <span class="n">OracleCommand</span> <span class="n">selectCmd</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">OracleCommand</span><span class="p">();</span>
+ <span class="n">selectCmd</span><span class="p">.</span><span class="n">Connection</span> <span class="p">=</span> <span class="n">cnn</span><span class="p">;</span>
+ <span class="n">selectCmd</span><span class="p">.</span><span class="n">CommandText</span> <span class="p">=</span> <span class="s">"SELECT USERNAME FROM USERS WHERE ID=1"</span><span class="p">;</span>
+
+ <span class="kt">object</span> <span class="n">result</span> <span class="p">=</span> <span class="n">selectCmd</span><span class="p">.</span><span class="nf">ExecuteScalar</span><span class="p">();</span>
+ <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"# Result : "</span> <span class="p">+</span> <span class="n">result</span><span class="p">);</span>
+
+ <span class="c1">// Select - DataTable</span>
+ <span class="n">DataSet</span> <span class="n">ds</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DataSet</span><span class="p">();</span>
+ <span class="n">OracleDataAdapter</span> <span class="n">da</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">OracleDataAdapter</span><span class="p">(</span><span class="s">"SELECT * FROM USERS"</span><span class="p">,</span> <span class="n">cnn</span><span class="p">);</span>
+ <span class="n">da</span><span class="p">.</span><span class="nf">Fill</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="s">"USERS"</span><span class="p">);</span>
+
+ <span class="n">DataTable</span> <span class="n">dt</span> <span class="p">=</span> <span class="n">ds</span><span class="p">.</span><span class="n">Tables</span><span class="p">[</span><span class="s">"USERS"</span><span class="p">];</span>
+ <span class="k">foreach</span> <span class="p">(</span><span class="n">DataRow</span> <span class="n">dr</span> <span class="k">in</span> <span class="n">dt</span><span class="p">.</span><span class="n">Rows</span><span class="p">)</span>
+ <span class="p">{</span>
+     <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"ID = {0}, USERNAME = {1}"</span><span class="p">,</span> <span class="n">dr</span><span class="p">[</span><span class="s">"ID"</span><span class="p">],</span> <span class="n">dr</span><span class="p">[</span><span class="s">"USERNAME"</span><span class="p">]));</span>
+ <span class="p">}</span>
+
+ <span class="cm">/*************************** Update *************************************/</span>
+ <span class="n">OracleCommand</span> <span class="n">updateCmd</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">OracleCommand</span><span class="p">();</span>
+ <span class="n">updateCmd</span><span class="p">.</span><span class="n">Connection</span> <span class="p">=</span> <span class="n">cnn</span><span class="p">;</span>
+ <span class="n">updateCmd</span><span class="p">.</span><span class="n">CommandText</span> <span class="p">=</span> <span class="s">"UPDATE USERS SET USERNAME = :USERNAME WHERE ID = :ID"</span><span class="p">;</span>
+
+ <span class="n">updateCmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"USERNAME"</span><span class="p">,</span> <span class="n">OracleDbType</span><span class="p">.</span><span class="n">Varchar2</span><span class="p">,</span> <span class="m">150</span><span class="p">);</span>
+ <span class="n">updateCmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"ID"</span><span class="p">,</span> <span class="n">OracleDbType</span><span class="p">.</span><span class="n">Int32</span><span class="p">);</span>
+
+ <span class="n">updateCmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">Value</span> <span class="p">=</span> <span class="s">"test2"</span><span class="p">;</span>
+ <span class="n">updateCmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="m">1</span><span class="p">].</span><span class="n">Value</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+
+ <span class="n">affected</span> <span class="p">=</span> <span class="n">updateCmd</span><span class="p">.</span><span class="nf">ExecuteNonQuery</span><span class="p">();</span>
+ <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"# Result : "</span> <span class="p">+</span> <span class="n">affected</span><span class="p">);</span>
+
+ <span class="cm">/*************************** Delete *************************************/</span>
+ <span class="n">OracleCommand</span> <span class="n">deleteCmd</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">OracleCommand</span><span class="p">();</span>
+ <span class="n">deleteCmd</span><span class="p">.</span><span class="n">Connection</span> <span class="p">=</span> <span class="n">cnn</span><span class="p">;</span>
+ <span class="n">deleteCmd</span><span class="p">.</span><span class="n">CommandText</span> <span class="p">=</span> <span class="s">"DELETE FROM USERS WHERE ID = :ID"</span><span class="p">;</span>
+
+ <span class="n">deleteCmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"ID"</span><span class="p">,</span> <span class="n">OracleDbType</span><span class="p">.</span><span class="n">Int32</span><span class="p">);</span>
+ <span class="n">deleteCmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">Value</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+
+ <span class="n">affected</span> <span class="p">=</span> <span class="n">deleteCmd</span><span class="p">.</span><span class="nf">ExecuteNonQuery</span><span class="p">();</span>
+ <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"# Result : "</span> <span class="p">+</span> <span class="n">affected</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p><a href="https://github.com/gwimong/exampleCode/tree/master/dotNetDataProvider/oracle/ODPDotNet/OracleDBTest">[전체소스]</a></p>
+  </li>
+</ol>
+
+<h2 id="using-odpnet-with-oracle-developer-tools-for-visual-studio">Using ODP.NET with Oracle Developer Tools for Visual Studio</h2>
+
+<ol>
+  <li>
+    <p>서버 탐색기 -  연결 추가 클릭 <br />
+<img src="/resource/ODPDotNet/ODPDotNet_ODT_Using1.png" alt="ODPDotNet_ODT1" title="ODPDotNet_ODT1" /></p>
+  </li>
+  <li>
+    <p>데이터 소스 변경 - Oracle 데이터베이스 - ODP.NET, 관리되는 드라이버 선택
+<img src="/resource/ODPDotNet/ODPDotNet_ODT_Using2.png" alt="ODPDotNet_ODT2" title="ODPDotNet_ODT2" /></p>
+  </li>
+  <li>
+    <p>연결 정보 입력 <br />
+<img src="/resource/ODPDotNet/ODPDotNet_ODT_Using3.png" alt="ODPDotNet_ODT3" title="ODPDotNet_ODT3" /></p>
+  </li>
+  <li>
+    <p>데이터 연결 확인 <br />
+<img src="/resource/ODPDotNet/ODPDotNet_ODT_Using4.png" alt="ODPDotNet_ODT3" title="ODPDotNet_ODT4" /></p>
+  </li>
+</ol>
+
+<h2 id="참고">참고</h2>
+<p><a href="http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/12c/r1/appdev/dotnet/Web_version_Fully_Managed_ODPnet_OBE/odpnetmngdrv.html">http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/12c/r1/appdev/dotnet/Web_version_Fully_Managed_ODPnet_OBE/odpnetmngdrv.html</a></p>
+
+        </article>
+        <hr>
+
+        
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+        
+        
+
+        <div class="post-recent">
+    <div class="pre">
+        
+        <p><strong>Previous:</strong> <a href="/2018/05/29/ODPDotNet_Install/">ODP.NET 설치</a></p>
+        
+    </div>
+    <div class="nex">
+
+        
+        <p><strong>Next:</strong> <a href="/2018/09/05/raid/">RAID 구성 종류</a></p>
+        
+    </div>
+</div>
+
+
+        <h2 id="comments">Comments</h2>
+        
+
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+
+    var disqus_config = function() {
+        this.page.url = 'http://localhost:4000/2018/05/29/ODPDotNet_Using/'; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://localhost:4000/2018/05/29/ODPDotNet_Using/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document,
+            s = d.createElement('script');
+
+        s.src = '//gwimong-github-io.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    Content
+                </div>
+                <ul id="content-side" class="content-ul">
+                    
+                    <li><a href="#comments">Comments</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="/js/pageContent.js " charset="utf-8"></script>
+
+
+<!-- 코드 접기/펼치기 -->
+<script language="JavaScript" type="text/javascript">
+function paragraph_toggle(obj) {
+	  if (obj.style.display == 'none')
+		      obj.style.display = 'block';
+	    else if (obj.style.display == 'block')
+			    obj.style.display = 'none';
+};
+</script>
+
+
+    <footer class="site-footer">
+    <div class="wrapper">
+        <p class="description">
+             mong's blog 
+        </p>
+        <p class="contact">
+            Contact me at: 
+			
+	            <a href="https://github.com/gwimong" title="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a> 
+			
+			
+				<a href="mailto:scarcedream@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+			
+			 
+			
+	            <a href="https://www.facebook.com/gwimong" title="Facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+			
+			 
+        </p>
+        <p class="power">
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+            <span>
+                Theme designed by <a href="https://github.com/Gaohaoyang">HyG</a>.
+            </span>
+        </p>
+    </div>
+</footer>
+
+    <div class="back-to-top">
+    <a href="#top" data-scroll>
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/smooth-scroll.min.js " charset="utf-8"></script>
+    <script type="text/javascript">
+      smoothScroll.init({
+        speed: 500, // Integer. How fast to complete the scroll in milliseconds
+        easing: 'easeInOutCubic', // Easing pattern to use
+        offset: 20, // Integer. How far to offset the scrolling anchor location in pixels
+      });
+    </script>
+    <!-- <script src=" /js/scroll.min.js " charset="utf-8"></script> -->
+  </body>
+
+</html>
