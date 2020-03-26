@@ -34,7 +34,7 @@ kramdown:
   syntax_highlighter: rouge
 
 # port
-# port: 1234
+port: 5000
 
 # url
 category_dir: category/
