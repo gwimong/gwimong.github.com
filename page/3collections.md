@@ -27,6 +27,7 @@ type: page
 * [You don't know JS (book series)](https://github.com/getify/You-Dont-Know-JS)
 * [You mIght not need jquery plugins](http://youmightnotneedjqueryplugins.com/)
 * [33 Concepts Every JavaScript Developer Should Know](https://github.com/leonardomso/33-js-concepts)
+* [7 JavaScript data structures you must know](https://medium.com/javarevisited/7-javascript-data-structures-you-must-know-95123122cc39)
 
 ### Vue   
 * [awesome-vue](https://github.com/vuejs/awesome-vue)
