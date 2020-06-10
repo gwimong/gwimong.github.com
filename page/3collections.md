@@ -43,6 +43,7 @@ type: page
 
 ### Other blogs
 * [2019.stateofjs.com](https://2019.stateofjs.com/) : javascript 동향을 분석하는 블로그
+* [roadmpa.sh](https://roadmap.sh/) : 개발자 로드맵 제공
 
 # Comments
 
