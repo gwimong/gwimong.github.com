@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[공유폴더] 명령프롬프트에서 Mount 시 안보임"
+title: "Windows 명령프롬프트에서 공유폴더 Mount 시 안보임"
 subtitle: "Mount를 성공하였는데, 탐색기에서 보이지 않음"
 date: 2020-05-25 10:26:00+0900
 categories: TroubleShooting

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[공유폴더] Windows에 NFS 공유 폴더 쓰기 실패"
+title: "Windows에서 NFS 공유 폴더 쓰기 실패"
 subtitle: "오류 내용 : 이 작업을 수행하기 위한 권한이 필요합니다."
 date: 2020-05-22 11:26:00+0900
 categories: TroubleShooting
