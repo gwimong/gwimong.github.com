@@ -2,7 +2,7 @@
 layout: post
 title: "Spring Web MVC 이해하기 #1"
 subtitle: "모델2와 MVC Pattern"
-date: 2020-06-23 17:00:00+0900
+date: 2020-06-24 11:00:00+0900
 categories: Programming
 tags: Spring DisignPattern
 mathjax: true
