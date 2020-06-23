@@ -1,15 +1,12 @@
 ---
 layout: post
-title: "Spring MVC 이해하기"
+title: "Spring Web MVC 이해하기 #1"
 subtitle: "모델2와 MVC Pattern"
-date: 2020-06-13 11:00:00+0900
+date: 2020-06-23 17:00:00+0900
 categories: Programming
 tags: Spring DisignPattern
 mathjax: true
 ---
-
-
-
 
 # Model1, Model2 그리고 MVC
 Spring MVC에 대해 말할 때, 항상 언급되는 것이 Model1과 Mode2입니다.  
