@@ -8,6 +8,10 @@ tags: Spring DisignPattern
 mathjax: true
 ---
 
+# Spring MVC
+공식 이름인 "Spring Web MVC"(이하. Spring MVC)는 Spring Framework의 모듈 중 하나인 "spring-webmvc"에서 유래하였습니다. 
+Spring MVC는 Servlet API를 기반으로 구축된 최초의 웹 프레임워크입니다.
+
 # Model1, Model2 그리고 MVC
 Spring MVC에 대해 말할 때, 항상 언급되는 것이 Model1과 Mode2입니다.  
 Model1과 Model2는 Java web application의 설계에서 흔히 사용되는 소프트웨어 디자인 패턴입니다.  
