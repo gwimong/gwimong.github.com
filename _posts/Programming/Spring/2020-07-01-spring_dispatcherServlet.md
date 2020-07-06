@@ -32,7 +32,7 @@ DispatchserServlet는 Spring MVC에 정의된 유일한 **Front Controller**입�
 # DispatcherServlet 설정
 ## web.xml에 DispatchserServlet 설정하기
 
->```xml
+> ```xml
 > <servlet>
 >    <servlet-name>dispatcher</servlet-name>
 >    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -46,6 +46,7 @@ DispatchserServlet는 Spring MVC에 정의된 유일한 **Front Controller**입�
 >     <servlet-name>dispatcher</servlet-name>
 >     <url-pattern>/</url-pattern>
 > </servlet-mapping>
+> ```
 
 위와 같이 설정 되어 있는 경우 **/WEB-INF/dispatcher-servlet.xml** 파일을 참조하여 DispatcherServlet이 생성되고, 모든 요청에 대하여 처리합니다.  
 (contextConfigLocation을 생략할 경우 기본적으로 웹어플리케이션의 **/WEB-INF/[서블릿이름]-servlet.xml** 파일에서 정보를 읽어옵니다.)
