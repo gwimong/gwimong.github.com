@@ -13,7 +13,7 @@ mathjax: true
 
 > The Spring Framework provides a comprehensive programming and configuration model for modern Java-based enterprise applications - on any kind of deployment platform.[[원문]](https://spring.io/projects/spring-framework)
 
-Spring Framework(이하 Spring)는 모든 종류의 배포 플랫폼에서 최산 Java 기반 **엔터프라이즈 응용 프로그램**을 위한 포괄적인 프로그래밍 구성 모델을 제공합니다.
+Spring Framework(이하 Spring)는 모든 종류의 배포 플랫폼에서 최신 Java 기반 **엔터프라이즈 응용 프로그램**을 위한 포괄적인 프로그래밍 구성 모델을 제공합니다.
 즉, Spring은 Java 기반의 **엔터프라이즈 응용 프로그램**를 개발하기 위한 Framework라고 할 수 있습니다.  
 
 **엔터프라이즈**라고 하니 JavaEE가 떠오릅니다.   
